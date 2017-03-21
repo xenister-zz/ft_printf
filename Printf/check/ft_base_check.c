@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_base_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 12:27:45 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/21 19:45:57 by susivagn         ###   ########.fr       */
+/*   Created: 2017/01/16 18:22:28 by susivagn          #+#    #+#             */
+/*   Updated: 2017/01/16 18:23:54 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *src, int freesrc)
+int		ft_base_check(char *str)
 {
-	size_t	a;
-	char	*dst;
+	int		i;
+	int		j;
 
-	dst = NULL;
-	a = ft_strlen(src);
-	dst = (char*)malloc(sizeof(char) * (a + 1));
-	if (!dst)
-		return (NULL);
-	a = 0;
-	while (src[a])
+	j = 0;
+	if (!str)
+		return (0);
+	while (str[j])
 	{
-		dst[a] = src[a];
-		a++;
+		i = j + 1;
+		while (str[i])
+		{
+			if (str[j] == str[i] || str[i] == '-' || str[i] == '+')
+				return (0);
+			i++;
+		}
+		j++;
 	}
-	dst[a] = '\0';
-	if (freesrc == 1)
-		free(src);
-	return (dst);
+	if (j < 1 || (j == 1 && !str[j]))
+		return (0);
+	return (j);
 }

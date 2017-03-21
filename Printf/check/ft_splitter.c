@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_splitter.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 12:27:45 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/21 19:45:57 by susivagn         ###   ########.fr       */
+/*   Created: 2016/11/12 19:16:42 by susivagn          #+#    #+#             */
+/*   Updated: 2016/11/15 17:08:12 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *src, int freesrc)
+char	**ft_splitter(char **dest, char const *src, char c)
 {
-	size_t	a;
-	char	*dst;
+	int		d;
+	int		a;
+	int		cpt;
 
-	dst = NULL;
-	a = ft_strlen(src);
-	dst = (char*)malloc(sizeof(char) * (a + 1));
-	if (!dst)
-		return (NULL);
+	d = -1;
 	a = 0;
-	while (src[a])
+	while (src[++d])
 	{
-		dst[a] = src[a];
-		a++;
+		if (src[d + 1] == '\0')
+		{
+			dest[a] = 0;
+			return (dest);
+		}
+		if ((c == src[d] && c != src[d + 1]) || (d == 0 && src[d] != c))
+		{
+			cpt = 0;
+			if (d != 0 && src[d] == c)
+				d = d + 1;
+			cpt = ft_lenbeforec(&src[d + 1], c);
+			dest[a++] = ft_strsub(src, d, cpt);
+			d = d + (cpt - 1);
+		}
 	}
-	dst[a] = '\0';
-	if (freesrc == 1)
-		free(src);
-	return (dst);
+	dest[a] = 0;
+	return (dest);
 }

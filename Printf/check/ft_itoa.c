@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 12:27:45 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/21 19:45:57 by susivagn         ###   ########.fr       */
+/*   Created: 2016/11/14 16:45:49 by susivagn          #+#    #+#             */
+/*   Updated: 2017/02/14 14:26:21 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *src, int freesrc)
+char	*ft_itoa(intmax_t n)
 {
-	size_t	a;
-	char	*dst;
+	char				*str;
+	int					sizemalloc;
+	intmax_t			nbr;
 
-	dst = NULL;
-	a = ft_strlen(src);
-	dst = (char*)malloc(sizeof(char) * (a + 1));
-	if (!dst)
-		return (NULL);
-	a = 0;
-	while (src[a])
+	nbr = n;
+	sizemalloc = ft_strintlen(n);
+	if (n < 0)
 	{
-		dst[a] = src[a];
-		a++;
+		nbr = -n;
+		sizemalloc++;
 	}
-	dst[a] = '\0';
-	if (freesrc == 1)
-		free(src);
-	return (dst);
+	if (!(str = (char*)malloc(sizeof(char) * (sizemalloc + 1))))
+		return (NULL);
+	str[sizemalloc] = '\0';
+	sizemalloc--;
+	while (sizemalloc != 0)
+	{
+		str[sizemalloc] = (nbr % 10) + '0';
+		nbr = nbr / 10;
+		sizemalloc--;
+	}
+	str[sizemalloc] = '0' + nbr;
+	if (n < 0)
+		str[sizemalloc] = '-';
+	return (str);
 }

@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_isalldigit.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 12:27:45 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/21 19:45:57 by susivagn         ###   ########.fr       */
+/*   Created: 2017/03/17 16:47:55 by susivagn          #+#    #+#             */
+/*   Updated: 2017/03/18 13:42:44 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *src, int freesrc)
+int		ft_isalldigit(char* src)
 {
-	size_t	a;
-	char	*dst;
+	int		i;
 
-	dst = NULL;
-	a = ft_strlen(src);
-	dst = (char*)malloc(sizeof(char) * (a + 1));
-	if (!dst)
-		return (NULL);
-	a = 0;
-	while (src[a])
+	i = 0;
+	while (src[i])
 	{
-		dst[a] = src[a];
-		a++;
+		if ((src[i] < '0' && src[i] > '9') || src[i] == ' ')
+			return (i);
+		i++;
 	}
-	dst[a] = '\0';
-	if (freesrc == 1)
-		free(src);
-	return (dst);
+	return (1);
 }

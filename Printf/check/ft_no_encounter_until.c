@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_no_encounter_until.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 12:27:45 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/21 19:45:57 by susivagn         ###   ########.fr       */
+/*   Created: 2017/01/30 18:05:59 by susivagn          #+#    #+#             */
+/*   Updated: 2017/01/30 18:08:14 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strdup(char *src, int freesrc)
+int		ft_no_encounter_until(char *str, char *caras, char c)
 {
-	size_t	a;
-	char	*dst;
+	int		i;
+	int		j;
+	int		ya;
 
-	dst = NULL;
-	a = ft_strlen(src);
-	dst = (char*)malloc(sizeof(char) * (a + 1));
-	if (!dst)
-		return (NULL);
-	a = 0;
-	while (src[a])
+	i = 0;
+	j = 0;
+	while (str[i] && str[i] != c)
 	{
-		dst[a] = src[a];
-		a++;
+		j = 0;
+		ya = 0;
+		while (caras[j])
+		{
+			if (str[i] == caras[j])
+				ya = 1;
+			j++;
+		}
+		if (ya == 0)
+			return (0);
+		i++;
 	}
-	dst[a] = '\0';
-	if (freesrc == 1)
-		free(src);
-	return (dst);
+	return (1);
 }

@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 12:27:45 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/21 19:45:57 by susivagn         ###   ########.fr       */
+/*   Created: 2016/11/09 15:57:38 by susivagn          #+#    #+#             */
+/*   Updated: 2016/11/15 16:29:52 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *src, int freesrc)
+char	*ft_strrchr(const char *src, int c)
 {
-	size_t	a;
-	char	*dst;
+	int		a;
 
-	dst = NULL;
 	a = ft_strlen(src);
-	dst = (char*)malloc(sizeof(char) * (a + 1));
-	if (!dst)
-		return (NULL);
-	a = 0;
-	while (src[a])
+	while (a >= 0)
 	{
-		dst[a] = src[a];
-		a++;
+		if (src[a] == ((char)c))
+			return (&((char*)src)[a]);
+		if (((char)c) == '\0')
+			return (&((char*)src)[a + 1]);
+		a--;
 	}
-	dst[a] = '\0';
-	if (freesrc == 1)
-		free(src);
-	return (dst);
+	return (0);
 }

@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 12:27:45 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/21 19:45:57 by susivagn         ###   ########.fr       */
+/*   Created: 2016/11/12 14:35:28 by susivagn          #+#    #+#             */
+/*   Updated: 2016/12/12 16:26:16 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-char	*ft_strdup(char *src, int freesrc)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	a;
-	char	*dst;
+	int		c;
+	char	*str;
 
-	dst = NULL;
-	a = ft_strlen(src);
-	dst = (char*)malloc(sizeof(char) * (a + 1));
-	if (!dst)
-		return (NULL);
-	a = 0;
-	while (src[a])
+	str = NULL;
+	if (!s1 && !s2)
 	{
-		dst[a] = src[a];
-		a++;
+		return (str);
 	}
-	dst[a] = '\0';
-	if (freesrc == 1)
-		free(src);
-	return (dst);
+	c = (ft_strlen(s1) + ft_strlen(s2));
+	str = ft_strnew(c);
+	if (!str)
+		return (NULL);
+	c = 0;
+	str = ft_strcpy(str, s1);
+	str = ft_strncat(str, s2, ft_strlen(s2));
+	return (str);
 }

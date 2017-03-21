@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 12:27:45 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/21 19:45:57 by susivagn         ###   ########.fr       */
+/*   Created: 2016/11/15 14:24:59 by susivagn          #+#    #+#             */
+/*   Updated: 2016/11/15 15:10:15 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *src, int freesrc)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	a;
-	char	*dst;
+	char	val[10];
+	int		c;
+	long	nb1;
 
-	dst = NULL;
-	a = ft_strlen(src);
-	dst = (char*)malloc(sizeof(char) * (a + 1));
-	if (!dst)
-		return (NULL);
-	a = 0;
-	while (src[a])
+	c = 0;
+	nb1 = n;
+	if (nb1 < 0)
 	{
-		dst[a] = src[a];
-		a++;
+		ft_putchar_fd('-', fd);
+		nb1 = nb1 * (-1);
 	}
-	dst[a] = '\0';
-	if (freesrc == 1)
-		free(src);
-	return (dst);
+	while (nb1 != 0)
+	{
+		val[c] = '0' + (nb1 % 10);
+		nb1 = nb1 / 10;
+		c++;
+	}
+	c--;
+	if (n == 0)
+		ft_putchar_fd('0', fd);
+	while (c >= 0)
+	{
+		ft_putchar_fd(val[c], fd);
+		c--;
+	}
 }

@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 12:27:45 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/21 19:45:57 by susivagn         ###   ########.fr       */
+/*   Created: 2016/11/12 13:01:59 by susivagn          #+#    #+#             */
+/*   Updated: 2016/12/05 22:20:55 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *src, int freesrc)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	size_t	a;
-	char	*dst;
+	unsigned int	c;
+	char			*cpy;
 
-	dst = NULL;
-	a = ft_strlen(src);
-	dst = (char*)malloc(sizeof(char) * (a + 1));
-	if (!dst)
+	c = 0;
+	if (!s)
+		return (((char*)s));
+	cpy = ft_strnew(len);
+	if (!cpy)
 		return (NULL);
-	a = 0;
-	while (src[a])
+	while (c < ((UI)len))
 	{
-		dst[a] = src[a];
-		a++;
+		cpy[c] = s[start];
+		c++;
+		start++;
 	}
-	dst[a] = '\0';
-	if (freesrc == 1)
-		free(src);
-	return (dst);
+	cpy[c] = '\0';
+	return (cpy);
 }

@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 12:27:45 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/21 19:45:57 by susivagn         ###   ########.fr       */
+/*   Created: 2016/11/09 16:23:33 by susivagn          #+#    #+#             */
+/*   Updated: 2016/11/09 16:35:12 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *src, int freesrc)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	a;
-	char	*dst;
+	int		c;
+	int		d;
+	int		t;
 
-	dst = NULL;
-	a = ft_strlen(src);
-	dst = (char*)malloc(sizeof(char) * (a + 1));
-	if (!dst)
-		return (NULL);
-	a = 0;
-	while (src[a])
+	c = 0;
+	d = 0;
+	t = 0;
+	if (little[d] == '\0')
+		return (((char*)big));
+	while (big[c] && c < ((int)len))
 	{
-		dst[a] = src[a];
-		a++;
+		d = 0;
+		t = c;
+		while (big[t] == little[d] && t < ((int)len))
+		{
+			t++;
+			d++;
+			if (little[d] == '\0')
+				return (&((char*)big)[c]);
+		}
+		c++;
 	}
-	dst[a] = '\0';
-	if (freesrc == 1)
-		free(src);
-	return (dst);
+	return (0);
 }

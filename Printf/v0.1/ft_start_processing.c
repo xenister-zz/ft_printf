@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 13:42:34 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/18 22:33:20 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/03/21 20:15:44 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,10 @@ void	ft_signed_numbers(char c)
 		g_buff = ft_itoa(va_arg(g_vl, uintmax_t));
 	if (ft_strchr(g_buff, '-') && g_flags.flagplus == 0 &&
 		(g_flags.flagplus = -1))
-		g_buff = ft_strdup(&g_buff[1]);
+		if (g_buff)
+			g_buff = ft_strdup(&g_buff[1], 0);
+	if (g_flags.flagspace == 1)
+		g_buff = ft_morealloc(g_buff, 1, 1);
 	if (g_flags.flagprecision != -1 && (g_flags.flagzero = -1))
 		ft_process_precision_nbr(g_buff);
 	ft_place_sign(g_flags.flagplus);
@@ -184,6 +187,8 @@ void	ft_process_precision_str(char *str)
 	int		lenstr;
 
 	lenstr = ft_strlen(str);
+	if (g_flags.flagprecision == 0)
+		g_flags.flagprecision = 1;
 	if (g_flags.flagprecision >= lenstr)
 		g_buff = str;
 	else
@@ -201,9 +206,11 @@ void	ft_string_char(char c)
 		ft_char();
 	if (c == 's')
 	{
-		cpystr = ft_strdup((char*)va_arg(g_vl, char*));
+		cpystr = ft_strdup((char*)va_arg(g_vl, void*), 0);
 		if (g_flags.flagprecision != -1)
 			ft_process_precision_str(cpystr);
+		else
+			g_buff = ft_strdup(cpystr, 1);
 		ft_process_flag_str(ft_strlen(g_buff));
 	}
 }
@@ -232,7 +239,7 @@ void	ft_process_flag_str(int lenstr)
 
 void	ft_char()
 {
-	g_buff = ft_memalloc(sizeof(char) * 1);
+	g_buff = ft_memalloc(sizeof(char) * 1 + 1);
 	g_buff[1] = '\0';
 	g_buff[0] = (char)va_arg(g_vl, int);
 	if (g_flags.flagprecision != -1)

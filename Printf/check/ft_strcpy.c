@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 12:27:45 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/21 19:45:57 by susivagn         ###   ########.fr       */
+/*   Created: 2016/11/08 12:45:13 by susivagn          #+#    #+#             */
+/*   Updated: 2016/11/08 15:08:59 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *src, int freesrc)
+char	*ft_strcpy(char *dst, const char *src)
 {
-	size_t	a;
-	char	*dst;
+	int		c;
 
-	dst = NULL;
-	a = ft_strlen(src);
-	dst = (char*)malloc(sizeof(char) * (a + 1));
-	if (!dst)
-		return (NULL);
-	a = 0;
-	while (src[a])
+	c = 0;
+	while (src[c])
 	{
-		dst[a] = src[a];
-		a++;
+		dst[c] = src[c];
+		c++;
 	}
-	dst[a] = '\0';
-	if (freesrc == 1)
-		free(src);
+	dst[c] = '\0';
 	return (dst);
 }

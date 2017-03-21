@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 12:27:45 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/21 19:45:57 by susivagn         ###   ########.fr       */
+/*   Created: 2016/11/12 18:35:30 by susivagn          #+#    #+#             */
+/*   Updated: 2016/11/14 15:31:50 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *src, int freesrc)
+char	**ft_strsplit(char const *s, char c)
 {
-	size_t	a;
-	char	*dst;
+	int		nbfind;
+	int		d;
+	char	**splittab;
 
-	dst = NULL;
-	a = ft_strlen(src);
-	dst = (char*)malloc(sizeof(char) * (a + 1));
-	if (!dst)
+	d = 0;
+	if (!s)
 		return (NULL);
-	a = 0;
-	while (src[a])
-	{
-		dst[a] = src[a];
-		a++;
-	}
-	dst[a] = '\0';
-	if (freesrc == 1)
-		free(src);
-	return (dst);
+	nbfind = ft_finder(s, c);
+	splittab = NULL;
+	if (ft_finder(s, c) == 0)
+		nbfind = 1;
+	splittab = malloc(sizeof(char**) * (nbfind + 1));
+	if (!splittab)
+		return (NULL);
+	splittab = ft_splitter(splittab, s, c);
+	return (splittab);
 }

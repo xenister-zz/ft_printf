@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lenofint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 12:27:45 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/21 19:45:57 by susivagn         ###   ########.fr       */
+/*   Created: 2016/11/14 18:12:43 by susivagn          #+#    #+#             */
+/*   Updated: 2016/11/14 20:07:03 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *src, int freesrc)
+int		ft_lenofint(int n)
 {
-	size_t	a;
-	char	*dst;
+	long	c;
+	long	nbr;
+	long	divis;
 
-	dst = NULL;
-	a = ft_strlen(src);
-	dst = (char*)malloc(sizeof(char) * (a + 1));
-	if (!dst)
-		return (NULL);
-	a = 0;
-	while (src[a])
+	c = 1;
+	nbr = n;
+	divis = 1;
+	if (nbr < 0)
 	{
-		dst[a] = src[a];
-		a++;
+		nbr = n * (-1);
+		c++;
 	}
-	dst[a] = '\0';
-	if (freesrc == 1)
-		free(src);
-	return (dst);
+	if (nbr < 10)
+		return (c);
+	if (nbr / divis == 0)
+	{
+		c++;
+		return (c);
+	}
+	while (nbr / divis > 9)
+	{
+		divis = divis * 10;
+		c++;
+	}
+	return (c);
 }

@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_isallhexa.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 12:27:45 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/21 19:45:57 by susivagn         ###   ########.fr       */
+/*   Created: 2017/03/18 18:38:18 by susivagn          #+#    #+#             */
+/*   Updated: 2017/03/18 20:02:02 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *src, int freesrc)
+int		ft_isallhexa(char *src)
 {
-	size_t	a;
-	char	*dst;
+	int		i;
 
-	dst = NULL;
-	a = ft_strlen(src);
-	dst = (char*)malloc(sizeof(char) * (a + 1));
-	if (!dst)
-		return (NULL);
-	a = 0;
-	while (src[a])
+	i = 0;
+	while (src[i])
 	{
-		dst[a] = src[a];
-		a++;
+		if ((src[i] >= '0' && src[i] <= '9') || (src[i] >= 'A' && src[i] <= 'F') ||
+			(src[i] >= 'a' && src[i] <= 'f') || src[i] == ' ')
+			i++;
+		else
+			return (0);
 	}
-	dst[a] = '\0';
-	if (freesrc == 1)
-		free(src);
-	return (dst);
+	return (i);
 }

@@ -1,35 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_append.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 12:27:45 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/21 19:45:57 by susivagn         ###   ########.fr       */
+/*   Created: 2017/01/17 16:23:56 by susivagn          #+#    #+#             */
+/*   Updated: 2017/01/17 16:27:04 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *src, int freesrc)
+char	*ft_append(char *s1, char *s2, int b)
 {
-	size_t	a;
-	char	*dst;
+	int		c;
+	char	*str;
 
-	dst = NULL;
-	a = ft_strlen(src);
-	dst = (char*)malloc(sizeof(char) * (a + 1));
-	if (!dst)
+	str = NULL;
+	if (!s1 && !s2)
+		return (str);
+	c = (ft_strlen(s1) + ft_strlen(s2));
+	str = ft_strnew(c);
+	if (!str)
 		return (NULL);
-	a = 0;
-	while (src[a])
+	c = 0;
+	str = ft_strcpy(str, s1);
+	str = ft_strncat(str, s2, ft_strlen(s2));
+	if (b == 1)
+		free(s1);
+	if (b == 2)
+		free(s2);
+	if (b == 3)
 	{
-		dst[a] = src[a];
-		a++;
+		free(s1);
+		free(s2);
 	}
-	dst[a] = '\0';
-	if (freesrc == 1)
-		free(src);
-	return (dst);
+	return (str);
 }

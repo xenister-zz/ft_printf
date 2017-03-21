@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 12:27:45 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/21 19:45:57 by susivagn         ###   ########.fr       */
+/*   Created: 2016/11/08 14:50:37 by susivagn          #+#    #+#             */
+/*   Updated: 2016/11/15 15:12:50 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *src, int freesrc)
+char	*ft_strncat(char *dst, const char *src, size_t n)
 {
-	size_t	a;
-	char	*dst;
+	size_t	c;
+	size_t	d;
 
-	dst = NULL;
-	a = ft_strlen(src);
-	dst = (char*)malloc(sizeof(char) * (a + 1));
-	if (!dst)
-		return (NULL);
-	a = 0;
-	while (src[a])
+	c = ft_strlen(dst);
+	d = 0;
+	while (d < n && src[d])
 	{
-		dst[a] = src[a];
-		a++;
+		dst[c] = src[d];
+		d++;
+		c++;
 	}
-	dst[a] = '\0';
-	if (freesrc == 1)
-		free(src);
+	dst[c] = '\0';
 	return (dst);
 }
