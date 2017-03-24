@@ -6,11 +6,11 @@
 #    By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/05 19:24:50 by susivagn          #+#    #+#              #
-#    Updated: 2017/03/18 19:06:47 by susivagn         ###   ########.fr        #
+#    Updated: 2017/03/22 17:28:32 by susivagn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+NAME = libftprintf.a
 
 SRC = ft_bzero.c \
 	  ft_memset.c \
@@ -93,14 +93,17 @@ SRC = ft_bzero.c \
 	  ft_place_in_str.c \
 	  ft_morealloc.c \
 	  ft_isalldigit.c \
-	  ft_isallhexa.c
+	  ft_isallhexa.c \
+	  ft_printf.c \
+	  ft_parsing.c \
+	  ft_start_processing.c
 
 OFILE = $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME):
-	gcc -Wall -Wextra -Werror -c $(SRC)
+	gcc -c $(SRC)
 	ar rc $(NAME) $(OFILE)
 	ranlib $(NAME)
 

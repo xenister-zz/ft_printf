@@ -6,17 +6,17 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 17:24:49 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/23 23:27:12 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/03/23 21:21:22 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <stdio.h>
 # include <stdarg.h>
+# include <stdio.h>
 # include <unistd.h>
-# include "../libft/libft.h"
+# include "libft.h"
 # include <limits.h>
 
 int				ft_printf(char *arg, ...);
@@ -32,7 +32,7 @@ void			init_struct_flag_lenmod(void);
 int				ft_start_processing(char *arg, char c);
 void			ft_string_char(char c);
 void			ft_signed_numbers(char c);
-void			ft_process_precision_str(char *str, char c);
+void			ft_process_precision_str(char *str);
 void			ft_process_precision_nbr(char *str);
 void			ft_process_flag_str(int lenstr);
 void			ft_char();
@@ -43,8 +43,6 @@ void			ft_unsigned_numbers(char c);
 void			ft_place_htag_pres(int sign);
 void			assign_htag(char *src, int sign);
 void			ft_place_htag(int sign, int i);
-intmax_t		ft_process_lenmod_signed();
-uintmax_t		ft_process_lenmod_unsigned();
 
 typedef struct	s_flags
 {

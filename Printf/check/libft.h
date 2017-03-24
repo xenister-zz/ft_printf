@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 14:16:30 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/21 19:47:08 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/03/22 16:12:19 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include "printf.h"
 
 typedef struct	s_list
 {
@@ -78,11 +79,11 @@ char			**ft_splitter(char **dest, char const *src, char c);
 char			**ft_strsplit(char const *s, char c);
 void			ft_putnbr(int n);
 void			ft_putchar(unsigned char c);
-void			ft_putstr(char const *str);
+int				ft_putstr(char const *str);
 int				ft_putunicode(int c);
 int				ft_putunicodesup(int c);
-void			ft_putstr_until_a(char *str, char a);
-void			ft_putstr_a_to_b(char *str, char a, char b);
+int				ft_putstr_until_a(char *str, char a);
+int				ft_putstr_a_to_b(char *str, char a, char b);
 int				ft_strintlen(intmax_t nbr);
 char			*ft_itoa(intmax_t n);
 char			*ft_utoa(uintmax_t n);
