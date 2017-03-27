@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 18:11:38 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/23 21:31:09 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/03/23 22:08:11 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,11 @@ int		ft_pourcent_chck(char *arg, int i, int l)
 	j = 0;
 	while (arg[i] && i < l && arg[i] != '%')
 		i++;
-	if (arg[i + 1] == '%')
+	if (arg[i] && arg[i + 1] == '%')
 	{
 		while (arg[i] == '%')
 			i++;
 		ft_putchar('%');
-		g_len++;
 		ft_putstr_a_to_b(&arg[i - 1], '%', '%');
 		while (arg[i] && i < l && arg[i] != '%')
 			i++;
@@ -58,24 +57,20 @@ int		ft_starter_with_flags(char *arg)
 	char	c;
 
 	i = 0;
-	printf("OLA - %s|\n", arg);
 	l = ft_strlen(arg);
 	while (i < l)
 	{
 		i = ft_pourcent_chck(arg, i, l);
 		c = ft_encounter(&arg[i], "sSpdDioOuUxXcC");
-		printf("|%c|\n", c);
 		if (!(ft_no_encounter_until(&arg[i], "-+# .0123456789hljz", c)))
 		{
 			init_struct_flag_lenmod();
 			ft_get_flags(&arg[i], c);
 			ft_get_len_mod(&arg[i], c);
-			//printf("| s=%d | m=%d | lm=%d |\n", g_flags.flagspace, g_flags.flagminus, g_flags.flagwidth);
 			ft_start_processing(&arg[i], c);
-			printf("|GB=%s|\n", g_buff);
-			g_len += ft_putstr(g_buff);
+			ft_putstr(g_buff);
 		}
-		g_len += ft_putstr_a_to_b(&arg[i], c, '%');
+		ft_putstr_a_to_b(&arg[i], c, '%');
 		i++;
 	}
 	return (0);

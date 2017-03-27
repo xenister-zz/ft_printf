@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 13:42:34 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/24 06:16:16 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/03/27 21:40:00 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		ft_start_processing(char *arg, char c)
 	return (0);
 }
 
-intmax_t	ft_process_lenmod_signed()
+intmax_t	ft_process_lenmod_signed(char c)
 {
 	intmax_t	nbr;
 
@@ -37,7 +37,7 @@ intmax_t	ft_process_lenmod_signed()
 	{
 		nbr = (int)va_arg(g_vl, void*);
 		if (g_len_modifier.modhh == 1)
-			nbr = (signed char)nbr;
+			nbr = (char)nbr;
 		else if (g_len_modifier.modh == 1)
 			nbr = (short)nbr;
 		else if (g_len_modifier.modl == 1)
@@ -51,11 +51,29 @@ intmax_t	ft_process_lenmod_signed()
 	else if (g_len_modifier.modz == 1)
 		nbr = (size_t)va_arg(g_vl, void*);
 	else
+		nbr = (int)va_arg(g_vl, void*);
+	return (nbr);
+}
+
+intmax_t	ft_process_lenmod_signed_big(char c)
+{
+	intmax_t	nbr;
+
+	if (g_len_modifier.modhh == 1 || g_len_modifier.modh == 1 ||
+		g_len_modifier.modl == 1)
+		return ((intmax_t)va_arg(g_vl, void*));
+	else if (g_len_modifier.modll == 1)
+		nbr = (long long)va_arg(g_vl, void*);
+	else if (g_len_modifier.modj == 1)
+		nbr = (intmax_t)va_arg(g_vl, void*);
+	else if (g_len_modifier.modz == 1)
+		nbr = (size_t)va_arg(g_vl, void*);
+	else
 		nbr = (intmax_t)va_arg(g_vl, void*);
 	return (nbr);
 }
 
-uintmax_t	ft_process_lenmod_unsigned()
+uintmax_t	ft_process_lenmod_unsigned(char c)
 {
 	uintmax_t	nbr;
 
@@ -80,7 +98,7 @@ void	ft_unsigned_numbers(char c)
 {
 	uintmax_t	nbr;
 
-	nbr = ft_process_lenmod_unsigned();
+	nbr = ft_process_lenmod_unsigned(c);
 	if (g_flags.flagplus != 0)
 		g_flags.flagplus = 0;
 	if (g_flags.flaghtag != 0)
@@ -100,13 +118,10 @@ void	ft_unsigned_numbers(char c)
 
 void	ft_signed_numbers(char c)
 {
-	intmax_t	nbr;
-
-	nbr = ft_process_lenmod_signed();
 	if (c == 'd' || c == 'i')
-		g_buff = ft_itoa(nbr);
+		g_buff = ft_itoa(ft_process_lenmod_signed(c));
 	else
-		g_buff = ft_itoa(nbr);
+		g_buff = ft_itoa(ft_process_lenmod_signed_big(c));
 	if (ft_strchr(g_buff, '-') && g_flags.flagplus == 0 &&
 		(g_flags.flagplus = -1))
 		if (g_buff)

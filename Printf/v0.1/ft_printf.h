@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 17:24:49 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/23 23:27:12 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/03/27 21:12:20 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ void			ft_unsigned_numbers(char c);
 void			ft_place_htag_pres(int sign);
 void			assign_htag(char *src, int sign);
 void			ft_place_htag(int sign, int i);
-intmax_t		ft_process_lenmod_signed();
-uintmax_t		ft_process_lenmod_unsigned();
+intmax_t		ft_process_lenmod_signed(char c);
+uintmax_t		ft_process_lenmod_unsigned(char c);
+intmax_t		ft_process_lenmod_signed_big(char c);
 
 typedef struct	s_flags
 {
