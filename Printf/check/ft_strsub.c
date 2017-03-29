@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 13:01:59 by susivagn          #+#    #+#             */
-/*   Updated: 2016/12/05 22:20:55 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/03/29 18:13:07 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	c = 0;
 	if (!s)
 		return (((char*)s));
-	cpy = ft_strnew(len);
+	cpy = ft_strnew(len, '\0');
 	if (!cpy)
 		return (NULL);
 	while (c < ((UI)len))

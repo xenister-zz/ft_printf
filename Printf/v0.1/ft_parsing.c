@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 18:11:38 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/23 22:08:11 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/03/29 18:23:11 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	init_struct_flag_lenmod(void)
 int		ft_pourcent_chck(char *arg, int i, int l)
 {
 	int		j;
-	char	c;
 
 	j = 0;
 	while (arg[i] && i < l && arg[i] != '%')
@@ -43,7 +42,8 @@ int		ft_pourcent_chck(char *arg, int i, int l)
 		while (arg[i] == '%')
 			i++;
 		ft_putchar('%');
-		ft_putstr_a_to_b(&arg[i - 1], '%', '%');
+		g_len++;
+		g_len += ft_putstr_a_to_b(&arg[i - 1], '%', '%');
 		while (arg[i] && i < l && arg[i] != '%')
 			i++;
 	}
@@ -67,10 +67,10 @@ int		ft_starter_with_flags(char *arg)
 			init_struct_flag_lenmod();
 			ft_get_flags(&arg[i], c);
 			ft_get_len_mod(&arg[i], c);
-			ft_start_processing(&arg[i], c);
-			ft_putstr(g_buff);
+			ft_start_processing(c);
+			g_len += ft_putstr(g_buff);
 		}
-		ft_putstr_a_to_b(&arg[i], c, '%');
+		g_len += ft_putstr_a_to_b(&arg[i], c, '%');
 		i++;
 	}
 	return (0);

@@ -6,13 +6,13 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 13:42:34 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/27 21:40:00 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/03/29 19:38:39 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_start_processing(char *arg, char c)
+int		ft_start_processing(char c)
 {
 	if (g_flags.flagwidth != 0 || g_flags.flagzero != -1)
 		g_flags.lm = g_flags.flagwidth >= g_flags.flagzero ? g_flags.flagwidth :
@@ -28,7 +28,7 @@ int		ft_start_processing(char *arg, char c)
 	return (0);
 }
 
-intmax_t	ft_process_lenmod_signed(char c)
+intmax_t	ft_process_lenmod_signed()
 {
 	intmax_t	nbr;
 
@@ -41,7 +41,7 @@ intmax_t	ft_process_lenmod_signed(char c)
 		else if (g_len_modifier.modh == 1)
 			nbr = (short)nbr;
 		else if (g_len_modifier.modl == 1)
-			nbr = nbr;
+			return (nbr);
 		return (nbr);
 	}
 	else if (g_len_modifier.modll == 1)
@@ -55,7 +55,7 @@ intmax_t	ft_process_lenmod_signed(char c)
 	return (nbr);
 }
 
-intmax_t	ft_process_lenmod_signed_big(char c)
+intmax_t	ft_process_lenmod_signed_big()
 {
 	intmax_t	nbr;
 
@@ -73,7 +73,7 @@ intmax_t	ft_process_lenmod_signed_big(char c)
 	return (nbr);
 }
 
-uintmax_t	ft_process_lenmod_unsigned(char c)
+uintmax_t	ft_process_lenmod_unsigned()
 {
 	uintmax_t	nbr;
 
@@ -98,7 +98,7 @@ void	ft_unsigned_numbers(char c)
 {
 	uintmax_t	nbr;
 
-	nbr = ft_process_lenmod_unsigned(c);
+	nbr = ft_process_lenmod_unsigned();
 	if (g_flags.flagplus != 0)
 		g_flags.flagplus = 0;
 	if (g_flags.flaghtag != 0)
@@ -119,9 +119,9 @@ void	ft_unsigned_numbers(char c)
 void	ft_signed_numbers(char c)
 {
 	if (c == 'd' || c == 'i')
-		g_buff = ft_itoa(ft_process_lenmod_signed(c));
+		g_buff = ft_itoa(ft_process_lenmod_signed());
 	else
-		g_buff = ft_itoa(ft_process_lenmod_signed_big(c));
+		g_buff = ft_itoa(ft_process_lenmod_signed_big());
 	if (ft_strchr(g_buff, '-') && g_flags.flagplus == 0 &&
 		(g_flags.flagplus = -1))
 		if (g_buff)
@@ -143,7 +143,7 @@ void	ft_process_precision_nbr(char *str)
 	if (g_flags.flagprecision > lenstr)
 	{
 		sizeprecision = lenstr + (g_flags.flagprecision - lenstr);
-		g_buff = ft_memalloc(sizeof(char) * sizeprecision + 1);
+		g_buff = ft_memalloc((sizeof(char) * sizeprecision + 1), ' ');
 		g_buff[sizeprecision] = '\0';
 		sizeprecision = g_flags.flagprecision - lenstr;
 		ft_str_fill_nchar_lr(g_buff, '0', sizeprecision);
@@ -162,13 +162,13 @@ void	ft_place_htag_pres(int sign)
 	if (sign == 1 || sign == 2)
 	{
 		g_buff = ft_morealloc(g_buff, 2 , 1);
-		assign_htag(g_buff, sign);
+		assign_htag(sign);
 		g_flags.flaghtag = 0;
 	}
 	if (sign == 3)
 	{
 		g_buff = ft_morealloc(g_buff, 1 ,1);
-		assign_htag(g_buff, sign);
+		assign_htag(sign);
 		g_flags.flaghtag = 0;
 	}
 }
@@ -202,7 +202,7 @@ void	ft_place_htag(int sign, int i)
 	}
 }
 
-void	assign_htag(char *src, int sign)
+void	assign_htag(int sign)
 {
 	if (sign == 1 || sign == 2)
 	{
@@ -271,7 +271,6 @@ void	ft_string_char(char c)
 {
 	int		i;
 	char	*cpystr;
-	int		lenstr;
 
 	i = 0;
 	if (c == 'c')
@@ -295,7 +294,7 @@ void	ft_process_flag_str(int lenstr)
 	if (g_flags.lm >= lenstr)
 	{
 		len = g_flags.lm >= lenstr ? g_flags.lm : lenstr;
-		buff = (char*)ft_memalloc(sizeof(char) * len);
+		buff = (char*)ft_memalloc((sizeof(char) * len), ' ');
 		buff[len] = '\0';
 		if (g_flags.flagminus == 0 && g_flags.flagzero != -1)
 		{
@@ -309,12 +308,42 @@ void	ft_process_flag_str(int lenstr)
 	}
 }
 
+char	*ft_getwchar(int c)
+{
+	char	*wchar;
+
+	wchar = ft_strnew(5, '\0');
+	if (c < 0x80)
+		wchar[0] = c;
+	else if ((c >= 0x80) && (c < 0x800))
+	{
+		wchar[0] = ((c >> 6) | 0xC0);
+		wchar[1] = ((c & 0x3F) | 0x80);
+	}
+	else if ((c >= 0x800) && (c < 0x10000))
+	{
+		wchar[0] = ((c >> 12) | 0xE0);
+		wchar[1] = (((c >> 6) & 0x3F) | 0X80);
+		wchar[2] = ((c & 0x3F) | 0x80);
+	}
+	else if ((c >= 0x10000) && (c <= 0x10FFFF))
+	{
+		wchar[0] = ((c >> 18) | 0xF0);
+		wchar[1] = (((c >> 12) & 0x3F) | 0X80);
+		wchar[2] = (((c >> 6) & 0x3F) | 0X80);
+		wchar[3] = ((c & 0x3F) | 0x80);
+	}
+	return (wchar);
+}
+
 void	ft_char()
 {
-	g_buff = ft_memalloc(sizeof(int) * 1 + 1);
-	g_buff[1] = '\0';
-	g_buff[0] = va_arg(g_vl, int);
-	if (g_flags.flagprecision != -1)
-		ft_process_precision_str(g_buff, 'c');
-	ft_process_flag_str(ft_strlen(g_buff));
+	int		c;
+	int		taille;
+
+	c = va_arg(g_vl, int);
+	taille = ft_size_unicode(c);
+	g_buff = ft_getwchar(c);
+		//ft_process_precision_str(g_buff, 'c');
+	//ft_process_flag_str(ft_strlen(g_buff));
 }

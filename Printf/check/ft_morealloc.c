@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/16 18:07:17 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/18 21:48:24 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/03/29 18:01:27 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ char	*ft_morealloc(char *src, int n, int where)
 	len = ft_strlen(src);
 	if (where == 1)
 	{
-		cpy = ft_memalloc(sizeof(char) * (len + n + 1));
+		cpy = ft_memalloc((sizeof(char) * (len + n + 1)), ' ');
 		cpy[len + n] = '\0';
 	}
 	else if (where == 2)
 	{
-		cpy = ft_memalloc(sizeof(char) * (len + (n * 2) + 1));
+		cpy = ft_memalloc((sizeof(char) * (len + (n * 2) + 1)), ' ');
 		cpy[len + (n * 2)] = '\0';
 	}
 	ft_strcpy(&cpy[n], src);

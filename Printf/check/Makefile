@@ -6,7 +6,7 @@
 #    By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/05 19:24:50 by susivagn          #+#    #+#              #
-#    Updated: 2017/03/22 17:28:32 by susivagn         ###   ########.fr        #
+#    Updated: 2017/03/29 18:56:56 by susivagn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,14 +96,15 @@ SRC = ft_bzero.c \
 	  ft_isallhexa.c \
 	  ft_printf.c \
 	  ft_parsing.c \
-	  ft_start_processing.c
+	  ft_start_processing.c \
+	  ft_size_unicode.c
 
 OFILE = $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME):
-	gcc -c $(SRC)
+	gcc -Wall -Werror -Wextra -c $(SRC)
 	ar rc $(NAME) $(OFILE)
 	ranlib $(NAME)
 
@@ -114,5 +115,3 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-.PHONY:clean

@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/09 15:07:56 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/27 21:24:02 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/03/28 16:37:34 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,15 @@ int		main(int ac, char **av)
 
 	if(ac || av)
 		;
-	printf("------*START*-------\n");
 
-	printf("4567 |%-10]5d| plip\n", 12);
-    printf("4567 |%10]5d| plip\n", 12);
+	ft_printf("\\n\n");
+
+	printf("%d\n", printf("|%-8C| |%#0 9lc| |%S|\n", myChar1, L'ℜ', L"ο Δικαιοπολις"));
+	ft_printf("%d\n", ft_printf("|%-8C| |%#0 9lc| |%S|\n", myChar1, L'ℜ', L"ο Δικαιοπολις"));
+	/*printf("------*START*-------\n");
+
+	printf("4567 |%-105d| plip\n", 12);
+    printf("4567 |%105d| plip\n", 12);
     printf("|%10.5d|\n", -12);
     printf("|%10d|\n", -12);
     printf("|%010d|\n", -12);

@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 17:24:49 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/27 21:12:20 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/03/29 19:02:09 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 # include <stdio.h>
 # include <stdarg.h>
 # include <unistd.h>
-# include "../libft/libft.h"
-# include <limits.h>
+# include "../check/libft.h"
 
 int				ft_printf(char *arg, ...);
 int				ft_starter_with_flags(char *arg);
@@ -29,7 +28,7 @@ void			ft_get_flags(char *arg, char c);
 void			ft_get_len_mod(char *arg, char c);
 int				ft_get_width_precision_zero(char *arg, int b);
 void			init_struct_flag_lenmod(void);
-int				ft_start_processing(char *arg, char c);
+int				ft_start_processing(char c);
 void			ft_string_char(char c);
 void			ft_signed_numbers(char c);
 void			ft_process_precision_str(char *str, char c);
@@ -41,11 +40,12 @@ void			ft_place_sign(int sign);
 void			ft_place_sign_pres(int sign);
 void			ft_unsigned_numbers(char c);
 void			ft_place_htag_pres(int sign);
-void			assign_htag(char *src, int sign);
+void			assign_htag(int sign);
 void			ft_place_htag(int sign, int i);
-intmax_t		ft_process_lenmod_signed(char c);
-uintmax_t		ft_process_lenmod_unsigned(char c);
-intmax_t		ft_process_lenmod_signed_big(char c);
+intmax_t		ft_process_lenmod_signed();
+uintmax_t		ft_process_lenmod_unsigned();
+intmax_t		ft_process_lenmod_signed_big();
+char			*ft_getwchar(int c);
 
 typedef struct	s_flags
 {

@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 14:16:30 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/22 16:12:19 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/03/29 18:56:43 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ int				ft_isascii(int c);
 int				ft_isprint(int c);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
-void			*ft_memalloc(size_t size);
+void			*ft_memalloc(size_t size, char c);
 void			ft_memdel(void **ap);
-char			*ft_strnew(size_t size);
+char			*ft_strnew(size_t size, char c);
 void			ft_strdel(char **as);
 void			ft_strclr(char *s);
 void			ft_striter(char *s, void (*f)(char *));
@@ -112,5 +112,6 @@ void			ft_str_fill_nchar_rl(char *str, char c, int n);
 char			*ft_place_in_str(char *dst, char *src, int b);
 char			*ft_morealloc(char *src, int n, int where);
 int				ft_isallhexa(char *src);
+int				ft_size_unicode(int c);
 
 #endif
