@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 18:11:38 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/29 18:23:11 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/04/03 19:37:32 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	init_struct_flag_lenmod(void)
 int		ft_pourcent_chck(char *arg, int i, int l)
 {
 	int		j;
+	//char	c;
 
 	j = 0;
 	while (arg[i] && i < l && arg[i] != '%')
@@ -47,9 +48,39 @@ int		ft_pourcent_chck(char *arg, int i, int l)
 		while (arg[i] && i < l && arg[i] != '%')
 			i++;
 	}
+	//c = ft_get_shit(&arg[i], "sSpdDioOuUxXcC-+# .0123456789hljz");
 	return (i);
 }
+/*
+char	ft_get_shit(char *str, char *src)
+{
+	int		i;
+	int		j;
+	int 	ya;
 
+	i = 0;
+	while (arg[i] && arg[i] != '%')
+	{
+		j = 0;
+		ya = 0;
+		while (src[j])
+		{
+			if (str[i] == src[j])
+				ya = 1;
+			j++;
+		}
+		if (ya == 0)
+			return(str[i])
+	}
+	return (0);
+}
+
+int		ft_do_shit(char *arg, int i, char c)
+{
+
+	return (i);
+}
+*/
 int		ft_starter_with_flags(char *arg)
 {
 	int		i;

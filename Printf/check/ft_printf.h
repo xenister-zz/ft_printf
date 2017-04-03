@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 17:24:49 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/29 19:02:09 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/04/03 16:20:18 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ intmax_t		ft_process_lenmod_signed();
 uintmax_t		ft_process_lenmod_unsigned();
 intmax_t		ft_process_lenmod_signed_big();
 char			*ft_getwchar(int c);
+int				ft_big_char();
+char			ft_get_shit(char *str, char *src);
+int				ft_do_shit(char *arg, int l, char c);
 
 typedef struct	s_flags
 {

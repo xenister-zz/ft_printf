@@ -6,7 +6,7 @@
 #    By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/05 19:24:50 by susivagn          #+#    #+#              #
-#    Updated: 2017/03/29 18:56:56 by susivagn         ###   ########.fr        #
+#    Updated: 2017/04/03 14:51:43 by susivagn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ SRC = ft_bzero.c \
 	  ft_itoa_base.c \
 	  ft_base_check.c \
 	  ft_append.c \
-	  ft_no_encounter.c \
+	  ft_no_encounter_char.c \
 	  ft_encounter.c \
 	  ft_no_encounter_until.c \
 	  ft_isnum_no_zero.c \

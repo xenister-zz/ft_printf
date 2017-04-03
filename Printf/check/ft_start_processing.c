@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 13:42:34 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/29 19:38:39 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/04/03 17:18:05 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ intmax_t	ft_process_lenmod_signed()
 		else if (g_len_modifier.modh == 1)
 			nbr = (short)nbr;
 		else if (g_len_modifier.modl == 1)
-			return (nbr);
+			nbr = (long)nbr;
 		return (nbr);
 	}
 	else if (g_len_modifier.modll == 1)
@@ -109,9 +109,10 @@ void	ft_unsigned_numbers(char c)
 	if (g_flags.flagprecision != -1 && (g_flags.flagzero = -1))
 	{
 		ft_process_precision_nbr(g_buff);
-		ft_place_htag_pres(g_flags.flaghtag);
+		if (nbr != 0)
+			ft_place_htag_pres(g_flags.flaghtag);
 	}
-	if (g_flags.flaghtag != 0)
+	if (g_flags.flaghtag != 0 && nbr != 0)
 		ft_place_htag(g_flags.flaghtag, 0);
 	ft_process_flag_str(ft_strlen(g_buff));
 }
@@ -273,8 +274,10 @@ void	ft_string_char(char c)
 	char	*cpystr;
 
 	i = 0;
-	if (c == 'c')
+	if (c == 'c' && g_len_modifier.modl == 0)
 		ft_char();
+	if ((g_len_modifier.modl == 1 && c == 'c') || c == 'C')
+		ft_big_char();
 	if (c == 's')
 	{
 		cpystr = ft_strdup((char*)va_arg(g_vl, void*), 0);
@@ -338,12 +341,22 @@ char	*ft_getwchar(int c)
 
 void	ft_char()
 {
+	char	c;
+
+	c = (char)va_arg(g_vl, void*);
+	g_buff = ft_strnew(2, '\0');
+	g_buff[0] = c;
+	//ft_process_precision_str(g_buff, 'c');
+	ft_process_flag_str(ft_strlen(g_buff));
+}
+
+int		ft_big_char()
+{
 	int		c;
 	int		taille;
 
-	c = va_arg(g_vl, int);
+	c = (int)va_arg(g_vl, void*);
 	taille = ft_size_unicode(c);
 	g_buff = ft_getwchar(c);
-		//ft_process_precision_str(g_buff, 'c');
-	//ft_process_flag_str(ft_strlen(g_buff));
+	return (taille);
 }
