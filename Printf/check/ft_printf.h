@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 17:24:49 by susivagn          #+#    #+#             */
-/*   Updated: 2017/04/03 16:20:18 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/04/04 21:47:24 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ void			ft_place_sign(int sign);
 void			ft_place_sign_pres(int sign);
 void			ft_unsigned_numbers(char c);
 void			ft_place_htag_pres(int sign);
-void			assign_htag(int sign);
-void			ft_place_htag(int sign, int i);
+void			ft_place_htag(int sign);
 intmax_t		ft_process_lenmod_signed();
 uintmax_t		ft_process_lenmod_unsigned();
 intmax_t		ft_process_lenmod_signed_big();

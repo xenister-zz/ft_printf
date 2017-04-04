@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 21:06:46 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/29 16:05:06 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/04/04 18:06:17 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ char	*conv_hexa(uintmax_t nbr, char c)
 
 int		ft_printf(char *arg, ...)
 {
+	g_len = 0;
+
 	if (!arg)
 		return(0);
 	if (!(ft_strchr(arg, '%')))

@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 17:28:54 by susivagn          #+#    #+#             */
-/*   Updated: 2017/04/03 19:39:31 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/04/04 21:38:50 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,47 @@ int		main(int ac, char **av)
 		;
 	printf("------*START*-------\n");
 
-	printf("@moulitest: %s", NULL);
+	ft_printf("%#08x\n", 42);
+
+	printf("%#08x\n", 42);
+
+/*
+	printf("@moulitest: %.x %.0x\n", 0, 0);
+
+	ft_printf("@moulitest: %.x %.0x\n", 0, 0);
+
+	int size = 100;
+
+	ft_printf("%x\n", 0);
+
+	ft_printf("%X\n", 0);
+
+	ft_printf("%x\n", 4294967296);
+
+	ft_printf("%X\n", 4294967296);
+
+	ft_printf("----------------\n");
+
+	printf("%x\n", 0);
+
+	printf("%X\n", 0);
+
+	printf("%x\n", 4294967296);
+
+	printf("%X\n", 4294967296);
+
+
+	printf("%x\n", -42);
+	printf("%X\n", -42);
+
+	ft_printf("%x\n", 0);
+	ft_printf("%X\n", 0);
+
+	ft_printf("%x\n", -42);
+	ft_printf("%X\n", -42);
+
+	ft_printf("%X\n", 42);*/
+	//printf("@moulitest: %s", NULL);
 	//ft_printf("ft == %   3yttt %D  q\n", 42949696);
 
 	//printf("|%-8C| |%#0 9lc| |%S|\n", myChar1, L'ℜ', L"ο Δικαιοπολις");
