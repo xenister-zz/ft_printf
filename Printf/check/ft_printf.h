@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 17:24:49 by susivagn          #+#    #+#             */
-/*   Updated: 2017/04/04 21:47:24 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/04/05 15:38:47 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ char			*ft_getwchar(int c);
 int				ft_big_char();
 char			ft_get_shit(char *str, char *src);
 int				ft_do_shit(char *arg, int l, char c);
+int				ft_check_space(char *str);
 
 typedef struct	s_flags
 {

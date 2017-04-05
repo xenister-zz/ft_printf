@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 13:42:34 by susivagn          #+#    #+#             */
-/*   Updated: 2017/04/04 21:49:10 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/04/05 16:00:29 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,13 +109,13 @@ void	ft_unsigned_numbers(char c)
 		g_buff = ft_strdup("0\0", 0);
 	if (g_flags.flagprecision != -1 && (g_flags.flagzero = -1))
 	{
+		ft_process_precision_nbr(g_buff);
 		if (nbr != 0)
 			ft_place_htag_pres(g_flags.flaghtag);
-		ft_process_precision_nbr(g_buff);
 	}
+	ft_process_flag_str(ft_strlen(g_buff));
 	if (g_flags.flaghtag != 0 && nbr != 0)
 		ft_place_htag(g_flags.flaghtag);
-	ft_process_flag_str(ft_strlen(g_buff));
 }
 
 void	ft_signed_numbers(char c)
@@ -163,25 +163,45 @@ void	ft_process_precision_nbr(char *str)
 
 void	ft_place_htag_pres(int sign)
 {
-	if (g_buff[0] == '0' && g_buff[1] != '\0' && g_buff[1] == '0')
+	if (ft_isallhexa(g_buff))
 	{
-		if (sign == 1 || sign == 2)
-			g_buff[1] = (sign == 1) ? 'x' : 'X';
-		if (sign == 3)
-			return;
-	}
-	else if (sign != 3 && g_buff[0] == '0' && g_buff[1] != '0' &&
+		if (g_buff[0] == '0' && g_buff[1] == '0')
+		{
+			if (sign == 1)
+				g_buff = ft_append("0x", g_buff, 2);
+			if (sign == 2)
+				g_buff = ft_append("0X", g_buff, 2);
+			if (sign == 3)
+				return;
+		}
+		else if (sign != 3 && g_buff[0] == '0' && g_buff[1] != '0' &&
 		g_buff[1] != '\0')
-	{
-		g_buff = ft_append("0", g_buff, 1);
+			g_buff = ft_append("0", g_buff, 2);
+		else if (sign == 1)
+			g_buff = ft_append("0x", g_buff, 2);
+		else if (sign == 2)
+			g_buff = ft_append("0X", g_buff, 2);
+		else if (sign == 3)
+			g_buff = ft_append("0", g_buff, 2);
 	}
-	else if (sign == 1)
-		g_buff = ft_append("0x", g_buff, 1);
-	else if (sign == 2)
-		g_buff = ft_append("0X", g_buff, 1);
-	else if (sign == 3)
-		g_buff = ft_append("0", g_buff, 1);
 	g_flags.flaghtag = 0;
+}
+
+int		ft_check_space(char *str)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (str[i] && str[i] != ' ')
+		i++;
+	while (str[i] && str[i] == ' ')
+	{
+		j++;
+		i++;
+	}
+	return (j);
 }
 
 void	ft_place_htag(int sign)
@@ -189,6 +209,7 @@ void	ft_place_htag(int sign)
 	int		i;
 
 	i = 0;
+	printf("|%s|\n", g_buff);
 	while (g_buff[i] && g_buff[i] == ' ')
 		i++;
 	if (g_buff[i] == '0' && g_buff[i + 1] == '0' && (sign == 1 || sign == 2))
@@ -203,11 +224,11 @@ void	ft_place_htag(int sign)
 	else if (ft_isallhexa(g_buff))
 	{
 		if (sign == 1)
-			g_buff = ft_append("0x", g_buff, 1);
+			g_buff = ft_append("0x", g_buff, 2);
 		if (sign == 2)
-			g_buff = ft_append("0X", g_buff, 1);
+			g_buff = ft_append("0X", g_buff, 2);
 		if (sign == 3)
-			g_buff = ft_append("0", g_buff, 1);
+			g_buff = ft_append("0", g_buff, 2);
 	}
 }
 
