@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 14:16:30 by susivagn          #+#    #+#             */
-/*   Updated: 2017/04/03 14:51:19 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/04/18 11:07:25 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,6 @@ char			*ft_place_in_str(char *dst, char *src, int b);
 char			*ft_morealloc(char *src, int n, int where);
 int				ft_isallhexa(char *src);
 int				ft_size_unicode(int c);
+int				ft_count_char(char *src, char c);
 
 #endif

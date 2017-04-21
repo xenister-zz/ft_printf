@@ -6,27 +6,31 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 17:28:54 by susivagn          #+#    #+#             */
-/*   Updated: 2017/04/05 16:48:21 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/04/21 19:17:22 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <wchar.h>
 #include <locale.h>
+#include <limits.h>
 
 int		main(int ac, char **av)
 {
 	char c = 'r';
 	char *str = "dede";
 	long long	nbr = 4444444;
-	wchar_t myChar1 = L'Ω';
+/*	wchar_t myChar1 = L'Ω';*/
 	setlocale(LC_ALL, "");
 
 	if(ac || av)
 		;
 	printf("------*START*-------\n");
 
-	printf("%d\n", ft_printf("%#x\n", 42));
-/*
+	ft_printf("%lu", -42);
+
+/*	ft_printf("|@moulitest: %#.o %#.0o|", 0, 0);
+	printf("|@moulitest: %#.o %#.0o|", 0, 0);
+
 	ft_printf("%#.8x\n", 42);
 
 	printf("%#.8x\n", 42);

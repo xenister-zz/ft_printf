@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_place_in_str.c                                  :+:      :+:    :+:   */
+/*   ft_count_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/10 15:33:29 by susivagn          #+#    #+#             */
-/*   Updated: 2017/04/21 19:06:57 by susivagn         ###   ########.fr       */
+/*   Created: 2017/04/18 11:02:36 by susivagn          #+#    #+#             */
+/*   Updated: 2017/04/18 11:34:05 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_place_in_str(char *dst, char *src, int b)
+int		ft_count_char(char *src, char c)
 {
 	int		i;
 	int		j;
 
 	i = 0;
 	j = 0;
-	if (b == 0)
-		while (src[i] && dst[i])
-		{
-			dst[i] = src[i];
-			i++;
-		}
-	if (b == 1)
+	while (src[i])
 	{
-		i = ft_strlen(dst);
-		j = ft_strlen(src);
-		while (--j >= 0 && --i >= 0)
-			dst[i] = src[j];
+		if (src[i] == c)
+			j++;
+		i++;
 	}
-	return (dst);
+	return (j);
 }

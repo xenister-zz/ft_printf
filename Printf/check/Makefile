@@ -6,7 +6,7 @@
 #    By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/05 19:24:50 by susivagn          #+#    #+#              #
-#    Updated: 2017/04/03 14:51:43 by susivagn         ###   ########.fr        #
+#    Updated: 2017/04/21 18:21:58 by susivagn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,14 +97,15 @@ SRC = ft_bzero.c \
 	  ft_printf.c \
 	  ft_parsing.c \
 	  ft_start_processing.c \
-	  ft_size_unicode.c
+	  ft_size_unicode.c \
+	  ft_count_char.c
 
 OFILE = $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME):
-	gcc -Wall -Werror -Wextra -c $(SRC)
+	gcc -Wall -Werror -Wextra -g -c $(SRC)
 	ar rc $(NAME) $(OFILE)
 	ranlib $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 13:42:34 by susivagn          #+#    #+#             */
-/*   Updated: 2017/04/05 16:00:29 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/04/21 19:21:06 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,19 +99,24 @@ void	ft_unsigned_numbers(char c)
 	uintmax_t	nbr;
 
 	nbr = ft_process_lenmod_unsigned();
+	printf("%ju\n", nbr);
 	if (g_flags.flaghtag == 1 && (c == 'x' || c == 'X'))
 		g_flags.flaghtag = (c == 'x') ? 1 : 2;
-	else if (g_flags.flagplus == 1 && (c == 'o' || c == 'O'))
+	else if (g_flags.flaghtag == 1 && (c == 'o' || c == 'O'))
 		g_flags.flaghtag = 3;
-	if (nbr != 0)
+	if (nbr != 0 && (c != 'u' || c != 'U'))
 		g_buff = conv_hexa(nbr, c);
-	if (nbr == 0)
+	if (c == 'u' || c == 'U')
+		g_buff = ft_itoa(nbr);
+	if (nbr == 0 && (c != 'u' || c != 'U'))
 		g_buff = ft_strdup("0\0", 0);
 	if (g_flags.flagprecision != -1 && (g_flags.flagzero = -1))
 	{
 		ft_process_precision_nbr(g_buff);
-		if (nbr != 0)
-			ft_place_htag_pres(g_flags.flaghtag);
+		if (nbr == 0 && g_flags.flaghtag == 3)
+			ft_place_htag(g_flags.flaghtag);
+		else if (nbr != 0)
+			ft_place_htag(g_flags.flaghtag);
 	}
 	ft_process_flag_str(ft_strlen(g_buff));
 	if (g_flags.flaghtag != 0 && nbr != 0)
@@ -124,10 +129,8 @@ void	ft_signed_numbers(char c)
 		g_buff = ft_itoa(ft_process_lenmod_signed());
 	else
 		g_buff = ft_itoa(ft_process_lenmod_signed_big());
-	if (ft_strchr(g_buff, '-') && g_flags.flagplus == 0 &&
-		(g_flags.flagplus = -1))
-		if (g_buff)
-			g_buff = ft_strdup(&g_buff[1], 0);
+	if (ft_strchr(g_buff, '-') && (g_flags.flagplus = -1))
+		g_buff = ft_strdup(&g_buff[1], 0);
 	if (g_flags.flagspace == 1)
 		g_buff = ft_morealloc(g_buff, 1, 1);
 	if (g_flags.flagprecision != -1 && (g_flags.flagzero = -1))
@@ -186,7 +189,23 @@ void	ft_place_htag_pres(int sign)
 	}
 	g_flags.flaghtag = 0;
 }
+/*
+int		ft_isallhexa_space_include(char *src)
+{
+	int		i;
 
+	i = 0;
+	while (src[i])
+	{
+		if ((src[i] >= '0' && src[i] <= '9') || (src[i] >= 'A' && src[i] <= 'F') ||
+			(src[i] >= 'a' && src[i] <= 'f') || src[i] == ' ')
+			i++;
+		else
+			return (0);
+	}
+	return (i);
+}
+*/
 int		ft_check_space(char *str)
 {
 	int		i;
@@ -209,7 +228,6 @@ void	ft_place_htag(int sign)
 	int		i;
 
 	i = 0;
-	printf("|%s|\n", g_buff);
 	while (g_buff[i] && g_buff[i] == ' ')
 		i++;
 	if (g_buff[i] == '0' && g_buff[i + 1] == '0' && (sign == 1 || sign == 2))
@@ -229,6 +247,31 @@ void	ft_place_htag(int sign)
 			g_buff = ft_append("0X", g_buff, 2);
 		if (sign == 3)
 			g_buff = ft_append("0", g_buff, 2);
+	}
+	else if (g_buff[i] != '0' || g_buff[i] != ' ')
+		ft_put_htag_space_after(sign);
+}
+
+void	ft_put_htag_space_after(int sign)
+{
+	int		i;
+	int		j;
+
+	i = ft_strlen(g_buff);
+	j = ft_count_char(g_buff, ' ');
+	if (sign == 3)
+	{
+		g_buff[i - 1] = '\0';
+		g_buff = ft_append("0", g_buff, 2);
+	}
+	if (sign != 3 && j > 1)
+	{
+		g_buff[i - 1] = '\0';
+		g_buff[i - 2] = '\0';
+		if (sign == 1)
+			g_buff = ft_append("0x", g_buff, 2);
+		if (sign == 2)
+			g_buff = ft_append("0X", g_buff, 2);
 	}
 }
 
