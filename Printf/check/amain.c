@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 17:28:54 by susivagn          #+#    #+#             */
-/*   Updated: 2017/04/21 19:17:22 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/04/26 15:46:36 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ int		main(int ac, char **av)
 		;
 	printf("------*START*-------\n");
 
-	ft_printf("%lu", -42);
+	//ft_printf("%lu", -42);
+
+	ft_printf("%2c\n", 0);
+	ft_printf("@moulitest: %s", NULL);
 
 /*	ft_printf("|@moulitest: %#.o %#.0o|", 0, 0);
 	printf("|@moulitest: %#.o %#.0o|", 0, 0);
