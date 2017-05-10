@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 14:16:30 by susivagn          #+#    #+#             */
-/*   Updated: 2017/04/18 11:07:25 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/05/06 16:15:28 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int				ft_putunicodesup(int c);
 int				ft_putstr_until_a(char *str, char a);
 int				ft_putstr_a_to_b(char *str, char a, char b);
 int				ft_strintlen(intmax_t nbr);
+int				ft_struintlen(uintmax_t nbr);
 char			*ft_itoa(intmax_t n);
 char			*ft_utoa(uintmax_t n);
 void			ft_putendl(char const *s);

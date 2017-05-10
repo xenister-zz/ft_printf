@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 18:11:38 by susivagn          #+#    #+#             */
-/*   Updated: 2017/04/03 19:37:32 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/05/10 21:40:15 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,53 +33,42 @@ void	init_struct_flag_lenmod(void)
 int		ft_pourcent_chck(char *arg, int i, int l)
 {
 	int		j;
-	//char	c;
+	char	c;
 
 	j = 0;
-	while (arg[i] && i < l && arg[i] != '%')
+	printf("LAAA\n");
+	while (arg[i] != '%')
 		i++;
-	if (arg[i] && arg[i + 1] == '%')
+	i++;
+	while (arg[i] && i < l)
 	{
-		while (arg[i] == '%')
+		if ((c = ft_encounter(&arg[i], "sSpdDioOuUxXcC%")) == '%')
+		{
+			init_struct_flag_lenmod();
+			ft_get_flags(&arg[i], '%');
+			ft_start_processing('%');
+			g_len += ft_putstr(g_buff);
+			g_len += ft_putstr_a_to_b(&arg[i], '%', '%');
+			while (arg[i] && arg[i] != '%')
+				i++;
 			i++;
-		ft_putchar('%');
-		g_len++;
-		g_len += ft_putstr_a_to_b(&arg[i - 1], '%', '%');
-		while (arg[i] && i < l && arg[i] != '%')
-			i++;
+		}
+		else
+		{
+			printf("i == %d\n", i);
+			return (i);
+		}
 	}
-	//c = ft_get_shit(&arg[i], "sSpdDioOuUxXcC-+# .0123456789hljz");
 	return (i);
 }
 /*
-char	ft_get_shit(char *str, char *src)
-{
-	int		i;
-	int		j;
-	int 	ya;
-
-	i = 0;
-	while (arg[i] && arg[i] != '%')
-	{
-		j = 0;
-		ya = 0;
-		while (src[j])
-		{
-			if (str[i] == src[j])
-				ya = 1;
-			j++;
-		}
-		if (ya == 0)
-			return(str[i])
-	}
-	return (0);
-}
-
-int		ft_do_shit(char *arg, int i, char c)
-{
-
-	return (i);
-}
+while (arg[i] == '%')
+	i++;
+ft_putchar('%');
+g_len++;
+g_len += ft_putstr_a_to_b(&arg[i - 1], '%', '%');
+while (arg[i] && i < l && arg[i] != '%')
+	i++;
 */
 int		ft_starter_with_flags(char *arg)
 {

@@ -6,11 +6,24 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/14 14:29:47 by susivagn          #+#    #+#             */
-/*   Updated: 2017/02/14 14:33:46 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/05/06 16:14:48 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int		ft_struintlen(uintmax_t nbr)
+{
+	int		size;
+
+	size = 1;
+	while ((nbr / 10) != 0)
+	{
+		nbr = nbr / 10;
+		size++;
+	}
+	return (size);
+}
 
 char	*ft_utoa(uintmax_t n)
 {
@@ -19,7 +32,7 @@ char	*ft_utoa(uintmax_t n)
 	uintmax_t			nbr;
 
 	nbr = n;
-	sizemalloc = ft_strintlen((intmax_t)n);
+	sizemalloc = ft_struintlen(n);
 	if (!(str = (char*)malloc(sizeof(char) * (sizemalloc + 1))))
 		return (NULL);
 	str[sizemalloc] = '\0';
