@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 17:28:54 by susivagn          #+#    #+#             */
-/*   Updated: 2017/05/10 21:42:25 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/05/11 18:57:23 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,12 @@ int		main(int ac, char **av)
 
 	printf("------*START*-------\n");
 
-	ft_printf("  %5% %10% %hU\n", 4294967296);
+	ft_printf("%% %%%% %%%  %%U\n", 4294967296);
 
-	ft_printf("%U\n", 4294967296);
-	//ft_printf("%s\n", ft_itoa(-922337203685477580));
+	printf("NEW STRING\n");
+
+	//ft_printf("%U\n", 4294967296);
+	ft_printf("%%s\n", ft_itoa(-922337203685477580));
 	//ft_printf("%lu\n", -42l);
 	//ft_printf("%hU\n", 4294967296);
 	//ft_printf("%lu", -42);

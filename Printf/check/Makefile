@@ -6,7 +6,7 @@
 #    By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/05 19:24:50 by susivagn          #+#    #+#              #
-#    Updated: 2017/04/21 18:21:58 by susivagn         ###   ########.fr        #
+#    Updated: 2017/05/11 18:35:24 by susivagn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,10 +104,14 @@ OFILE = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME):
-	gcc -Wall -Werror -Wextra -g -c $(SRC)
+$(NAME): $(OFILE)
+	#gcc -Wall -Werror -Wextra -g -c $(SRC)
 	ar rc $(NAME) $(OFILE)
 	ranlib $(NAME)
+
+
+%.o: %.c
+	gcc -Wall -Werror -Wextra -c -g $^
 
 clean:
 	rm -f $(OFILE)

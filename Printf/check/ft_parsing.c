@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 18:11:38 by susivagn          #+#    #+#             */
-/*   Updated: 2017/05/10 21:40:15 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/05/11 18:57:59 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,13 @@ void	init_struct_flag_lenmod(void)
 
 int		ft_pourcent_chck(char *arg, int i, int l)
 {
-	int		j;
 	char	c;
 
-	j = 0;
-	printf("LAAA\n");
-	while (arg[i] != '%')
-		i++;
-	i++;
 	while (arg[i] && i < l)
 	{
+		while (i < l && arg[i] != '%')
+			i++;
+		i = (i >= l) ? i : ++i;
 		if ((c = ft_encounter(&arg[i], "sSpdDioOuUxXcC%")) == '%')
 		{
 			init_struct_flag_lenmod();
@@ -49,27 +46,16 @@ int		ft_pourcent_chck(char *arg, int i, int l)
 			ft_start_processing('%');
 			g_len += ft_putstr(g_buff);
 			g_len += ft_putstr_a_to_b(&arg[i], '%', '%');
-			while (arg[i] && arg[i] != '%')
+			while (i < l && arg[i] != '%')
 				i++;
-			i++;
+			i = (i >= l) ? i : ++i;
 		}
 		else
-		{
-			printf("i == %d\n", i);
 			return (i);
-		}
 	}
 	return (i);
 }
-/*
-while (arg[i] == '%')
-	i++;
-ft_putchar('%');
-g_len++;
-g_len += ft_putstr_a_to_b(&arg[i - 1], '%', '%');
-while (arg[i] && i < l && arg[i] != '%')
-	i++;
-*/
+
 int		ft_starter_with_flags(char *arg)
 {
 	int		i;
@@ -81,8 +67,10 @@ int		ft_starter_with_flags(char *arg)
 	while (i < l)
 	{
 		i = ft_pourcent_chck(arg, i, l);
+		if (i >= l)
+			return (0);
 		c = ft_encounter(&arg[i], "sSpdDioOuUxXcC");
-		if (!(ft_no_encounter_until(&arg[i], "-+# .0123456789hljz", c)))
+		if ((ft_no_encounter_until(&arg[i], "-+# .0123456789hljz", c)))
 		{
 			init_struct_flag_lenmod();
 			ft_get_flags(&arg[i], c);

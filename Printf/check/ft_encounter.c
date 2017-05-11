@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/24 18:52:09 by susivagn          #+#    #+#             */
-/*   Updated: 2017/01/26 18:26:48 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/05/11 17:55:15 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ char	ft_encounter(char *str, char *caras)
 		}
 		i++;
 	}
-	return (-1);
+	return (0);
 }
