@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 13:42:34 by susivagn          #+#    #+#             */
-/*   Updated: 2017/07/15 19:02:49 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/07/18 18:22:30 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ void	ft_signed_numbers(char c)
 	if (ft_strchr(g_buff, '-') && (g_flags.flagplus = -1))
 		g_buff = ft_strdup(&g_buff[1], 0);
 	if (g_flags.flagspace == 1)
-		g_buff = ft_morealloc(g_buff, 1, 1);
+		g_buff = ft_append(" ", g_buff, 2);
 	if (g_flags.flagprecision != -1 && (g_flags.flagzero = -1))
 		ft_process_precision_nbr(g_buff);
 	ft_process_flag_str(ft_strlen(g_buff));
@@ -308,6 +308,7 @@ void	ft_place_sign(int sign)
 	int		i;
 
 	i = 0;
+	printf("|Gbuff = *%s*|\n", g_buff);
 	if (sign != 0)
 	{
 		if ((sign == 1) && ft_strcmp("0", g_buff) == 0)

@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 16:47:55 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/18 13:42:44 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/07/18 16:35:06 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int		ft_isalldigit(char* src)
 	i = 0;
 	while (src[i])
 	{
-		if ((src[i] < '0' && src[i] > '9') || src[i] == ' ')
-			return (i);
+		if ((src[i] < '0' || src[i] > '9') || src[i] == ' ')
+			return (0);
 		i++;
 	}
 	return (1);
