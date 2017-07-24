@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 17:28:54 by susivagn          #+#    #+#             */
-/*   Updated: 2017/07/18 18:16:59 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/07/24 17:45:47 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,14 @@ int		main(int ac, char **av)
 
 	printf("------*START*-------\n");
 
-	ft_printf("|%-+5d|\n", 0);
-	ft_printf("|%-+05d|\n", 0);
+	ft_printf("|% d|\n", 42);
+	printf("|% d|\n", 42);
 
-	printf("|%-+5d|\n", 0);
-	printf("|%-+05d|", 0);
+	// ft_printf("|%-5d|\n", -42);
+ //  	ft_printf("|%-05d|\n", -42);
+	//
+	// printf("|%-5d|\n", -42);
+ //  	printf("|%-05d|\n", -42);
 
 	// printf("%0+5d\n", -42);
 	// ft_printf("%0+5d\n", -42);

@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 13:42:34 by susivagn          #+#    #+#             */
-/*   Updated: 2017/07/18 18:22:30 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/07/24 17:56:56 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,8 @@ void	ft_signed_numbers(char c)
 		g_buff = ft_itoa(ft_process_lenmod_signed_big());
 	if (ft_strchr(g_buff, '-') && (g_flags.flagplus = -1))
 		g_buff = ft_strdup(&g_buff[1], 0);
-	if (g_flags.flagspace == 1)
+	if (g_flags.flagspace == 1 && (((g_flags.flagwidth = 0) &&
+	(g_flags.flagprecision == -1)) || g_flags.flagwidth < g_flags.flagprecision))
 		g_buff = ft_append(" ", g_buff, 2);
 	if (g_flags.flagprecision != -1 && (g_flags.flagzero = -1))
 		ft_process_precision_nbr(g_buff);
@@ -303,12 +304,11 @@ void	ft_place_sign_pres(int sign)
 	g_flags.flagplus = 0;
 }
 
-void	ft_place_sign(int sign)
+void	ft_sign_zero(int sign)
 {
 	int		i;
 
 	i = 0;
-	printf("|Gbuff = *%s*|\n", g_buff);
 	if (sign != 0)
 	{
 		if ((sign == 1) && ft_strcmp("0", g_buff) == 0)
@@ -324,16 +324,40 @@ void	ft_place_sign(int sign)
 		}
 		while (g_buff[i] == ' ' && g_buff[i])
 			i++;
-		if (g_buff[i] == '0' && sign == -1)
-			g_buff[i] = '-';
-		else if (g_buff[i] == '0' && sign == 1)
-			g_buff[i] = '+';
-		if (i > 0 && g_buff[i] >= '0' && g_buff[i] <= '9')
+		if (i > 0 && ft_strcmp("0", &g_buff[i]) == 0 && sign == 1)
+			g_buff[--i] = '+';
+		else if (ft_strlen(g_buff) > 0 && ft_isallsame(g_buff, '0') == 1 &&
+			sign == 1)
+			g_buff[0] = '+';
+	}
+}
+
+void	ft_place_sign(int sign)
+{
+	int		i;
+
+	i = 0;
+	ft_sign_zero(sign);
+	//printf("g_buff = |%s|\n", g_buff);
+	if (sign != 0)
+	{
+		while (g_buff[i] == ' ' && g_buff[i])
+			i++;
+		if (g_buff[i] == '0')
+			g_buff[i] = (sign < 0) ? '-' : '+';
+		else if (i > 0 && ft_isalldigit(&g_buff[i]))
 			g_buff[i - 1] = (sign < 0) ? '-' : '+';
 		else if (ft_isalldigit(g_buff))
 		{
 			g_buff = ft_morealloc(g_buff, 1, 1);
 			g_buff[i] = (sign < 0) ? '-' : '+';
+		}
+		else if (i == 0 && (g_buff[i] >= '1' && g_buff[i] <= '9'))
+		{
+			if (sign == -1)
+				g_buff = ft_append("-", g_buff, 2);
+			else
+				g_buff = ft_append("+", g_buff, 2);
 		}
 	}
 }

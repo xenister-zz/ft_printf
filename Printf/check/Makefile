@@ -6,7 +6,7 @@
 #    By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/05 19:24:50 by susivagn          #+#    #+#              #
-#    Updated: 2017/05/11 18:35:24 by susivagn         ###   ########.fr        #
+#    Updated: 2017/07/24 15:04:28 by susivagn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,7 +98,8 @@ SRC = ft_bzero.c \
 	  ft_parsing.c \
 	  ft_start_processing.c \
 	  ft_size_unicode.c \
-	  ft_count_char.c
+	  ft_count_char.c \
+	  ft_isallsame.c
 
 OFILE = $(SRC:.c=.o)
 
