@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 17:24:49 by susivagn          #+#    #+#             */
-/*   Updated: 2017/07/24 15:16:08 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/07/26 16:49:11 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct	s_flags
 
 typedef struct	s_len_modifier
 {
+	int		nomod;
 	int		modhh;
 	int		modh;
 	int		modll;

@@ -103,7 +103,7 @@ SRC = ft_bzero.c \
 
 OFILE = $(SRC:.c=.o)
 
-FLAGS= -Wall -Wextra -Weverything #-g3 -fsanitize=address
+FLAGS= -Wall -Wextra -Weverything -g3 -fsanitize=address
 
 all: $(NAME)
 

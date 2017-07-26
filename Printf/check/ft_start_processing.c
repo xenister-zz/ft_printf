@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 13:42:34 by susivagn          #+#    #+#             */
-/*   Updated: 2017/07/24 17:56:56 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/07/26 20:23:55 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,11 @@ void		ft_print_adress(void)
 {
 	unsigned long	addr;
 
-	addr = (unsigned long)va_arg(g_vl, void*);
+	if (!(addr = (unsigned long)va_arg(g_vl, void*)))
+	{
 		g_buff = ft_strdup("0x0", 0);
+		return;
+	}
 	g_buff = ft_itoa_base(addr, "0123456789abcdef");
 	g_buff = ft_append("0x", g_buff, 2);
 }
@@ -69,8 +72,8 @@ intmax_t	ft_process_lenmod_signed_big()
 	intmax_t	nbr;
 
 	if (g_len_modifier.modhh == 1 || g_len_modifier.modh == 1 ||
-		g_len_modifier.modl == 1)
-		return ((intmax_t)va_arg(g_vl, void*));
+		g_len_modifier.modl == 1 || g_len_modifier.nomod == 1)
+		return ((long)va_arg(g_vl, void*));
 	else if (g_len_modifier.modll == 1)
 		nbr = (long long)va_arg(g_vl, void*);
 	else if (g_len_modifier.modj == 1)
@@ -86,16 +89,16 @@ uintmax_t	ft_process_lenmod_unsigned(char c)
 {
 	uintmax_t	nbr;
 
-	if (c == 'U')
+	if (c == 'U' || c == 'O')
 		return (ft_process_lenmod_unsigned_big());
 	if (g_len_modifier.modhh == 1)
 		nbr = (unsigned char)va_arg(g_vl, void*);
 	else if (g_len_modifier.modh == 1)
 		nbr = (unsigned short)va_arg(g_vl, void*);
 	else if (g_len_modifier.modl == 1)
-		nbr = (uintmax_t)va_arg(g_vl, void*);
+		nbr = (unsigned long)va_arg(g_vl, void*);
 	else if (g_len_modifier.modll == 1)
-		nbr = (uintmax_t)va_arg(g_vl, void*);
+		nbr = (long long)va_arg(g_vl, void*);
 	else if (g_len_modifier.modj == 1)
 		nbr = (uintmax_t)va_arg(g_vl, void*);
 	else if (g_len_modifier.modz == 1)
@@ -110,10 +113,10 @@ uintmax_t	ft_process_lenmod_unsigned_big()
 	uintmax_t	nbr;
 
 	if (g_len_modifier.modhh == 1 || g_len_modifier.modh == 1 ||
-		g_len_modifier.modl == 1)
-		return (uintmax_t)va_arg(g_vl, void*);
+		g_len_modifier.modl == 1 || g_len_modifier.nomod == 1)
+		return (unsigned long)va_arg(g_vl, void*);
 	else if (g_len_modifier.modll == 1)
-		nbr = (uintmax_t)va_arg(g_vl, void*);
+		nbr = (unsigned long long)va_arg(g_vl, void*);
 	else if (g_len_modifier.modj == 1)
 		nbr = (uintmax_t)va_arg(g_vl, void*);
 	else if (g_len_modifier.modz == 1)
@@ -159,8 +162,9 @@ void	ft_signed_numbers(char c)
 		g_buff = ft_itoa(ft_process_lenmod_signed_big());
 	if (ft_strchr(g_buff, '-') && (g_flags.flagplus = -1))
 		g_buff = ft_strdup(&g_buff[1], 0);
-	if (g_flags.flagspace == 1 && (((g_flags.flagwidth = 0) &&
-	(g_flags.flagprecision == -1)) || g_flags.flagwidth < g_flags.flagprecision))
+	if (g_flags.flagspace == 1 && ((g_flags.flagwidth == 0 &&
+		g_flags.flagprecision == -1) || (g_flags.flagwidth <
+		g_flags.flagprecision)))
 		g_buff = ft_append(" ", g_buff, 2);
 	if (g_flags.flagprecision != -1 && (g_flags.flagzero = -1))
 		ft_process_precision_nbr(g_buff);

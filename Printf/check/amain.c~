@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 17:28:54 by susivagn          #+#    #+#             */
-/*   Updated: 2017/07/26 20:22:53 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/07/26 18:41:44 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,26 +28,18 @@ int		main(int ac, char **av)
 
 	printf("------*START*-------\n");
 
-printf("%O\n", LONG_MAX);
-ft_printf("%O\n", LONG_MAX);
-
-  // t_printf("|%x|\n", -42);
-  // rintf("|%x|\n", -42);
-  //
-  // t_printf("%X\n", -42);
-  // rintf("%X\n", -42);
-  //
-  // ft_printf("%x\n", 4294967296);
-  // printf("%x\n", 4294967296);
-  //
-  // ft_printf("%X\n", 4294967296);
-  // printf("%X\n", 4294967296);
-  //
-  // ft_printf("%u\n", "-1");
-  // printf("%u\n", "-1");
-  //
-  // ft_printf("%u\n", "4294967296");
-  // printf("%u\n", "4294967296");
+	ft_printf("|%x|\n", -42);
+	printf("|%x|\n", -42);
+	ft_printf("%X\n", -42);
+	printf("%X\n", -42);
+  ft_printf("%x\n", 4294967296);
+  printf("%x\n", 4294967296);
+  ft_printf("%X\n", 4294967296);
+  printf("%X\n", 4294967296);
+  ft_printf("%u\n", "-1");
+  printf("%u\n", "-1");
+  ft_printf("%u\n", "4294967296");
+  printf("%u\n", "4294967296");
 
 	//ft_printf("|% d|\n", 42);
 	//printf("|% d|\n", 42);

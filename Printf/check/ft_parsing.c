@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 18:11:38 by susivagn          #+#    #+#             */
-/*   Updated: 2017/07/15 15:44:49 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/07/26 18:09:46 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_struct_flag_lenmod(void)
 	g_flags.flagzero = -1;
 	g_flags.flagwidth = 0;
 	g_flags.lm = 0;
+	g_len_modifier.nomod = 0;
 	g_len_modifier.modhh = 0;
 	g_len_modifier.modh = 0;
 	g_len_modifier.modll = 0;
@@ -135,6 +136,10 @@ void	ft_get_len_mod(char *arg, char c)
 		else
 			i++;
 	}
+	if (g_len_modifier.modhh == 0 && g_len_modifier.modh == 0 &&
+	g_len_modifier.modll == 0 && g_len_modifier.modl == 0 &&
+	g_len_modifier.modj == 0 && g_len_modifier.modz == 0)
+		g_len_modifier.nomod = 1;
 }
 
 void	ft_get_flags(char *arg, char c)
