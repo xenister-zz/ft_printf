@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 13:42:34 by susivagn          #+#    #+#             */
-/*   Updated: 2017/07/26 20:23:55 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/07/27 17:45:58 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,12 @@ void		ft_print_adress(void)
 	if (!(addr = (unsigned long)va_arg(g_vl, void*)))
 	{
 		g_buff = ft_strdup("0x0", 0);
+		ft_process_flag_str(ft_strlen(g_buff));
 		return;
 	}
 	g_buff = ft_itoa_base(addr, "0123456789abcdef");
 	g_buff = ft_append("0x", g_buff, 2);
+	ft_process_flag_str(ft_strlen(g_buff));
 }
 
 intmax_t	ft_process_lenmod_signed()
@@ -141,7 +143,7 @@ void	ft_unsigned_numbers(char c)
 		g_buff = ft_utoa(nbr);
 	if (nbr == 0 && (c != 'u' || c != 'U'))
 		g_buff = ft_strdup("0\0", 0);
-	if (g_flags.flagprecision != -1 && (g_flags.flagzero = -1))
+	if (g_flags.flagprecision >= 0 && (g_flags.flagzero = -1))
 	{
 		ft_process_precision_nbr(g_buff);
 		if (nbr == 0 && g_flags.flaghtag == 3)
@@ -470,11 +472,22 @@ void	ft_char()
 	c = (char)va_arg(g_vl, void*);
 	if (c == 0)
 		g_len++;
+	if (!c && g_flags.flagminus == 1)
+		write(1, "\0", 1);
+	if (!c && g_flags.flagzero != -1)
+		g_flags.lm--;
 	if (c == 0 && g_flags.flagwidth > 0)
 		g_flags.lm--;
 	g_buff = ft_strnew(2, '\0');
 	g_buff[0] = c;
 	ft_process_flag_str(ft_strlen(g_buff));
+	if (!c && g_flags.flagminus == 0)
+	{
+		g_len += ft_putstr(g_buff);
+		write(1, "\0", 1);
+		*g_buff = 0;
+	}
+
 }
 
 int		ft_big_char()
@@ -483,6 +496,8 @@ int		ft_big_char()
 	int		taille;
 
 	c = (int)va_arg(g_vl, void*);
+	if (c == 0)
+		g_len++ && write (1, "\0", 1);
 	taille = ft_size_unicode(c);
 	g_buff = ft_getwchar(c);
 	return (taille);

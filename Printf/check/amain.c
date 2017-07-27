@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 17:28:54 by susivagn          #+#    #+#             */
-/*   Updated: 2017/07/26 20:22:53 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/07/27 17:37:08 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,14 @@ int		main(int ac, char **av)
 
 	printf("------*START*-------\n");
 
-printf("%O\n", LONG_MAX);
-ft_printf("%O\n", LONG_MAX);
+	printf("% Zoooo\n");
+	printf("*%#.o*\n", 42);
+	ft_printf("|%#.o|\n", 42);
+
+	// printf("|%d|", ft_printf("%C", 0));
+	// printf("|%d|", printf("%C", 0));
+// printf("%O\n", LONG_MAX);
+// ft_printf("%O\n", LONG_MAX);
 
   // t_printf("|%x|\n", -42);
   // rintf("|%x|\n", -42);
