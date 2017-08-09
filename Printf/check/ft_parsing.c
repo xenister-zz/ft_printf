@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/18 18:11:38 by susivagn          #+#    #+#             */
-/*   Updated: 2017/07/27 16:31:07 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/08/08 15:15:55 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,60 +29,6 @@ void	init_struct_flag_lenmod(void)
 	g_len_modifier.modl = 0;
 	g_len_modifier.modj = 0;
 	g_len_modifier.modz = 0;
-}
-
-int		ft_pourcent_chck(char *arg, int i, int l)
-{
-	char	c;
-
-	while (arg[i] && i < l)
-	{
-		while (i < l && arg[i] != '%')
-			i++;
-		i = (i >= l) ? i : ++i;
-		if ((c = ft_encounter(&arg[i], "sSpdDioOuUxXcC%")) == '%')
-		{
-			init_struct_flag_lenmod();
-			ft_get_flags(&arg[i], '%');
-			ft_start_processing('%');
-			g_len += ft_putstr(g_buff);
-			g_len += ft_putstr_a_to_b(&arg[i], '%', '%');
-			while (i < l && arg[i] != '%')
-				i++;
-			i = (i >= l) ? i : ++i;
-		}
-		else
-			return (i);
-	}
-	return (i);
-}
-
-int		ft_starter_with_flags(char *arg)
-{
-	int		i;
-	int		l;
-	char	c;
-
-	i = 0;
-	l = ft_strlen(arg);
-	while (i < l)
-	{
-		i = ft_pourcent_chck(arg, i, l);
-		if (i >= l)
-			return (0);
-		c = ft_encounter(&arg[i], "sSpdDioOuUxXcC");
-		if ((ft_no_encounter_until(&arg[i], "-+# .0123456789hljz", c)))
-		{
-			init_struct_flag_lenmod();
-			ft_get_flags(&arg[i], c);
-			ft_get_len_mod(&arg[i], c);
-			ft_start_processing(c);
-			g_len += ft_putstr(g_buff);
-		}
-		g_len += ft_putstr_a_to_b(&arg[i], c, '%');
-		i++;
-	}
-	return (0);
 }
 
 int		ft_get_width_precision_zero(char *arg, int b)
@@ -132,13 +78,13 @@ void	ft_get_len_mod(char *arg, char c)
 		else if (arg[i] == 'j' && (i += 1))
 			g_len_modifier.modj = 1;
 		else if (arg[i] == 'z' && (i += 1))
- 			g_len_modifier.modz = 1;
+			g_len_modifier.modz = 1;
 		else
 			i++;
 	}
 	if (g_len_modifier.modhh == 0 && g_len_modifier.modh == 0 &&
-	g_len_modifier.modll == 0 && g_len_modifier.modl == 0 &&
-	g_len_modifier.modj == 0 && g_len_modifier.modz == 0)
+			g_len_modifier.modll == 0 && g_len_modifier.modl == 0 &&
+			g_len_modifier.modj == 0 && g_len_modifier.modz == 0)
 		g_len_modifier.nomod = 1;
 }
 
@@ -160,9 +106,9 @@ void	ft_get_flags(char *arg, char c)
 		else if (arg[i] == '.' && (i += 1))
 			i += ft_get_width_precision_zero(&arg[i], 0);
 		else if (arg[i] == '0' && (i += 1))
- 			i += ft_get_width_precision_zero(&arg[i], 2);
+			i += ft_get_width_precision_zero(&arg[i], 2);
 		else if (ft_isnum_no_zero(arg[i]) && g_flags.flagprecision == -1)
- 			i += ft_get_width_precision_zero(&arg[i], 1);
+			i += ft_get_width_precision_zero(&arg[i], 1);
 		else
 			i++;
 	}

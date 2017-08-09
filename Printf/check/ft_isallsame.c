@@ -6,11 +6,11 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/24 15:00:37 by susivagn          #+#    #+#             */
-/*   Updated: 2017/07/24 15:03:46 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/08/08 14:53:19 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isallsame(char* str, char a)
+int		ft_isallsame(char *str, char a)
 {
 	int		i;
 
@@ -18,7 +18,7 @@ int		ft_isallsame(char* str, char a)
 	while (str[i])
 	{
 		if (str[i] != a)
-			return(0);
+			return (0);
 		i++;
 	}
 	return (1);

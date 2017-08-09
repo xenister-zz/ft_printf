@@ -6,13 +6,13 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 16:47:55 by susivagn          #+#    #+#             */
-/*   Updated: 2017/07/18 16:35:06 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/08/08 14:51:10 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isalldigit(char* src)
+int		ft_isalldigit(char *src)
 {
 	int		i;
 

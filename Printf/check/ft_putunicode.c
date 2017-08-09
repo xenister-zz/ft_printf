@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/08 17:05:02 by susivagn          #+#    #+#             */
-/*   Updated: 2017/02/08 17:05:14 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/08/09 16:08:55 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		ft_putunicode(int c)
 
 	if (c < 0x80)
 	{
-		write (1, &c, 1);
+		write(1, &c, 1);
 		return (1);
 	}
 	else if ((c >= 0x80) && (c < 0x800))

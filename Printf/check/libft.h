@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 14:16:30 by susivagn          #+#    #+#             */
-/*   Updated: 2017/07/24 15:17:06 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/08/08 15:17:41 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int				ft_strcmp(const char *s1, const char *s2);
 int				ft_atoi(const char *str);
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
-int				ft_isalldigit(char* src);
+int				ft_isalldigit(char *src);
 int				ft_isalnum(int c);
 int				ft_isnum_no_zero(char c);
 int				ft_isascii(int c);
@@ -115,6 +115,6 @@ char			*ft_morealloc(char *src, int n, int where);
 int				ft_isallhexa(char *src);
 int				ft_size_unicode(int c);
 int				ft_count_char(char *src, char c);
-int				ft_isallsame(char* str, char a);
+int				ft_isallsame(char *str, char a);
 
 #endif

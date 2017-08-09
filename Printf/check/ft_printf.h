@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 17:24:49 by susivagn          #+#    #+#             */
-/*   Updated: 2017/07/26 16:49:11 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/08/08 15:16:59 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int				ft_check_space(char *str);
 void			ft_put_htag_space_after(int sign);
 int				ft_isallhexa_space_include(char *src);
 void			ft_print_adress(void);
-int				ft_isallsame(char* str, char a);
+int				ft_isallsame(char *str, char a);
 
 typedef struct	s_flags
 {
@@ -80,7 +80,7 @@ typedef struct	s_len_modifier
 }				t_len_modifier;
 
 int				g_len;
-char 			*g_buff;
+char			*g_buff;
 va_list			g_vl;
 t_flags			g_flags;
 t_len_modifier	g_len_modifier;

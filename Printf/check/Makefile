@@ -6,7 +6,7 @@
 #    By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/05 19:24:50 by susivagn          #+#    #+#              #
-#    Updated: 2017/07/24 15:04:28 by susivagn         ###   ########.fr        #
+#    Updated: 2017/08/08 15:14:58 by susivagn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,11 +99,18 @@ SRC = ft_bzero.c \
 	  ft_start_processing.c \
 	  ft_size_unicode.c \
 	  ft_count_char.c \
-	  ft_isallsame.c
+	  ft_isallsame.c \
+	  ft_process_char_str.c \
+	  ft_process_sign.c \
+	  ft_process_htag.c \
+	  ft_process_precision_flag.c \
+	  ft_lenmod_unsign.c \
+	  ft_lenmod_signed.c \
+	  ft_start_parsing.c
 
 OFILE = $(SRC:.c=.o)
 
-FLAGS= -Wall -Wextra -Weverything #-g3 -fsanitize=address
+FLAGS= -Wall -Wextra #-g3 -fsanitize=address
 
 all: $(NAME)
 

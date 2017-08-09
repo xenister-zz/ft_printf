@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/15 21:06:46 by susivagn          #+#    #+#             */
-/*   Updated: 2017/07/26 20:21:16 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/08/08 15:04:05 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	ft_noflags(char *arg)
 
 char	*conv_hexa(uintmax_t nbr, char c)
 {
-	//printf("nbr|%D|\n", nbr);
 	if (c == 'x')
 		return (ft_itoa_base(nbr, "0123456789abcdef"));
 	else if (c == 'X')
@@ -36,9 +35,8 @@ char	*conv_hexa(uintmax_t nbr, char c)
 int		ft_printf(char *arg, ...)
 {
 	g_len = 0;
-
 	if (!arg)
-		return(0);
+		return (0);
 	if (!(ft_strchr(arg, '%')))
 		ft_noflags(arg);
 	else
