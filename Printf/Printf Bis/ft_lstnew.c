@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/15 17:57:20 by susivagn          #+#    #+#             */
-/*   Updated: 2016/11/24 12:54:42 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/08/10 15:48:32 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_list		*ft_lstnew(void const *content, size_t content_size)
 	}
 	else
 	{
-		nlist->content = ft_memalloc(content_size);
+		nlist->content = ft_memalloc(content_size, '\0');
 		nlist->content = ft_memcpy(nlist->content, content, content_size);
 		nlist->content_size = content_size;
 		nlist->next = NULL;

@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/09 15:22:17 by susivagn          #+#    #+#             */
-/*   Updated: 2017/08/09 18:00:17 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/08/10 16:01:03 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,8 @@ void		ft_signed_numbers(char c, t_printf *m_struct);
 uintmax_t	ft_process_lenmod_unsigned(char c, t_printf *m_struct);
 uintmax_t	ft_process_lenmod_unsigned_big(t_printf *m_struct);
 void		ft_unsigned_numbers(char c, t_printf *m_struct);
+int			ft_start_processing(char c, t_printf *m_struct);
+void		ft_print_adress(t_printf *m_struct);
+int			ft_check_space(char *str);
 
 #endif

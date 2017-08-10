@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 16:23:56 by susivagn          #+#    #+#             */
-/*   Updated: 2017/08/09 15:16:10 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/08/10 15:49:01 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_append(char *s1, char *s2, int b)
 	if (!s1 && !s2)
 		return (str);
 	c = (ft_strlen(s1) + ft_strlen(s2));
-	str = ft_strnew(c);
+	str = ft_strnew(c, '\0');
 	if (!str)
 		return (NULL);
 	c = 0;

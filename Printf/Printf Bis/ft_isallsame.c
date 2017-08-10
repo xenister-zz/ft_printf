@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_isallsame.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/12 14:35:28 by susivagn          #+#    #+#             */
-/*   Updated: 2017/08/10 15:47:16 by susivagn         ###   ########.fr       */
+/*   Created: 2017/07/24 15:00:37 by susivagn          #+#    #+#             */
+/*   Updated: 2017/08/08 14:53:19 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
-
-char	*ft_strjoin(char const *s1, char const *s2)
+int		ft_isallsame(char *str, char a)
 {
-	int		c;
-	char	*str;
+	int		i;
 
-	str = NULL;
-	if (!s1 && !s2)
+	i = 0;
+	while (str[i])
 	{
-		return (str);
+		if (str[i] != a)
+			return (0);
+		i++;
 	}
-	c = (ft_strlen(s1) + ft_strlen(s2));
-	str = ft_strnew(c, '\0');
-	if (!str)
-		return (NULL);
-	c = 0;
-	str = ft_strcpy(str, s1);
-	str = ft_strncat(str, s2, ft_strlen(s2));
-	return (str);
+	return (1);
 }

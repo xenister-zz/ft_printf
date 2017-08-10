@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 14:32:39 by susivagn          #+#    #+#             */
-/*   Updated: 2017/08/09 17:15:37 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/08/10 15:26:42 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,23 @@ void	ft_string_char(char c, t_printf *m_struct)
 
 	i = 0;
 	if (c == 'c' && m_struct->modl == 0)
-		ft_char();
+		ft_char(m_struct);
 	if ((m_struct->modl == 1 && c == 'c') || c == 'C')
-		ft_big_char();
+		ft_big_char(m_struct);
 	if (c == 's')
 	{
 		if (!(cpystr = ft_strdup((char*)va_arg(m_struct->vap, char*), 0)))
 			cpystr = ft_strdup("(null)", 0);
 		if (m_struct->flagprecision != -1)
-			ft_process_precision_str(cpystr, c);
+			ft_process_precision_str(cpystr, c, m_struct);
 		else
 			m_struct->buffer = ft_strdup(cpystr, 1);
-		ft_process_flag_str(ft_strlen(m_struct->buffer));
+		ft_process_flag_str(ft_strlen(m_struct->buffer), m_struct);
 	}
 	if (c == '%')
 	{
 		m_struct->buffer = ft_strdup("%", 0);
-		ft_process_flag_str(ft_strlen(m_struct->buffer));
+		ft_process_flag_str(ft_strlen(m_struct->buffer), m_struct);
 	}
 }
 
@@ -82,7 +82,7 @@ void	ft_char(t_printf *m_struct)
 		m_struct->lm--;
 	m_struct->buffer = ft_strnew(2, '\0');
 	m_struct->buffer[0] = c;
-	ft_process_flag_str(ft_strlen(m_struct->buffer));
+	ft_process_flag_str(ft_strlen(m_struct->buffer), m_struct);
 	if (!c && m_struct->flagminus == 0)
 	{
 		m_struct->len += ft_putstr(m_struct->buffer);

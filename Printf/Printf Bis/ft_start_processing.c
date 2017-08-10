@@ -6,13 +6,13 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 13:42:34 by susivagn          #+#    #+#             */
-/*   Updated: 2017/08/10 15:57:11 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/08/10 16:08:32 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_start_processing(char c, t_printf m_struct)
+int		ft_start_processing(char c, t_printf *m_struct)
 {
 	if (m_struct->flagwidth != 0 || m_struct->flagzero != -1)
 		m_struct->lm = m_struct->flagwidth >= m_struct->flagzero ?
@@ -28,19 +28,19 @@ int		ft_start_processing(char c, t_printf m_struct)
 	return (0);
 }
 
-void	ft_print_adress(t_printf m_struct)
+void	ft_print_adress(t_printf *m_struct)
 {
 	unsigned long	addr;
 
-	if (!(addr = (unsigned long)va_arg(m_strcut->vap, void*)))
+	if (!(addr = (unsigned long)va_arg(m_struct->vap, void*)))
 	{
 		m_struct->buffer = ft_strdup("0x0", 0);
-		ft_process_flag_str(ft_strlen(m_struct->buffer));
+		ft_process_flag_str(ft_strlen(m_struct->buffer), m_struct);
 		return ;
 	}
 	m_struct->buffer = ft_itoa_base(addr, "0123456789abcdef");
 	m_struct->buffer = ft_append("0x", m_struct->buffer, 2);
-	ft_process_flag_str(ft_strlen(m_struct->buffer));
+	ft_process_flag_str(ft_strlen(m_struct->buffer), m_struct);
 }
 
 int		ft_check_space(char *str)

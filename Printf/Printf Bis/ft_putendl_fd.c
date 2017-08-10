@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/12 14:35:28 by susivagn          #+#    #+#             */
-/*   Updated: 2017/08/10 15:47:16 by susivagn         ###   ########.fr       */
+/*   Created: 2016/11/15 14:20:40 by susivagn          #+#    #+#             */
+/*   Updated: 2016/11/15 15:01:15 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	ft_putendl_fd(char const *s, int fd)
 {
-	int		c;
-	char	*str;
-
-	str = NULL;
-	if (!s1 && !s2)
-	{
-		return (str);
-	}
-	c = (ft_strlen(s1) + ft_strlen(s2));
-	str = ft_strnew(c, '\0');
-	if (!str)
-		return (NULL);
-	c = 0;
-	str = ft_strcpy(str, s1);
-	str = ft_strncat(str, s2, ft_strlen(s2));
-	return (str);
+	if (!s)
+		return ;
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }

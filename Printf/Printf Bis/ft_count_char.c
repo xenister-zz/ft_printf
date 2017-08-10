@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_count_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/12 14:35:28 by susivagn          #+#    #+#             */
-/*   Updated: 2017/08/10 15:47:16 by susivagn         ###   ########.fr       */
+/*   Created: 2017/04/18 11:02:36 by susivagn          #+#    #+#             */
+/*   Updated: 2017/08/08 14:50:15 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-char	*ft_strjoin(char const *s1, char const *s2)
+int		ft_count_char(char *src, char c)
 {
-	int		c;
-	char	*str;
+	int		i;
+	int		j;
 
-	str = NULL;
-	if (!s1 && !s2)
+	i = 0;
+	j = 0;
+	while (src[i])
 	{
-		return (str);
+		if (src[i] == c)
+			j++;
+		i++;
 	}
-	c = (ft_strlen(s1) + ft_strlen(s2));
-	str = ft_strnew(c, '\0');
-	if (!str)
-		return (NULL);
-	c = 0;
-	str = ft_strcpy(str, s1);
-	str = ft_strncat(str, s2, ft_strlen(s2));
-	return (str);
+	return (j);
 }

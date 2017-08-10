@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 14:26:19 by susivagn          #+#    #+#             */
-/*   Updated: 2017/08/09 17:45:31 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/08/10 15:31:05 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_place_htag_pres(int sign, t_printf *m_struct)
 		else if (sign == 3)
 			m_struct->buffer = ft_append("0", m_struct->buffer, 2);
 	}
-	g_flags.flaghtag = 0;
+	m_struct->flaghtag = 0;
 }
 
 void	ft_place_htag(int sign, t_printf *m_struct)
@@ -64,7 +64,7 @@ void	ft_place_htag(int sign, t_printf *m_struct)
 			m_struct->buffer = ft_append("0", m_struct->buffer, 2);
 	}
 	else if (m_struct->buffer[i] != '0' || m_struct->buffer[i] != ' ')
-		ft_put_htag_space_after(sign, &m_struct);
+		ft_put_htag_space_after(sign, m_struct);
 }
 
 void	ft_put_htag_space_after(int sign, t_printf *m_struct)

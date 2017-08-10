@@ -6,14 +6,14 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 17:28:54 by susivagn          #+#    #+#             */
-/*   Updated: 2017/07/27 18:08:33 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/08/10 16:09:07 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <wchar.h>
 #include <locale.h>
 #include <limits.h>
-#include "libft.h"
+#include "Printf Bis/libft.h"
 
 int		main(int ac, char **av)
 {
@@ -28,11 +28,11 @@ int		main(int ac, char **av)
 
 	printf("------*START*-------\n");
 
-	ft_printf("%C\n", L'ë');
+	//ft_printf("%C\n", L'ë');
 
 	// printf("% Zoooo\n");
-	// printf("*%#.o*\n", 42);
-	// ft_printf("|%#.o|\n", 42);
+	printf("*%#.o*\n", 42);
+	ft_printf("|%#.o|\n", 42);
 
 	// printf("|%d|", ft_printf("%C", 0));
 	// printf("|%d|", printf("%C", 0));

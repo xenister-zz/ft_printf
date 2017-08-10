@@ -6,7 +6,7 @@
 #    By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/09 17:53:05 by susivagn          #+#    #+#              #
-#    Updated: 2017/08/09 18:06:53 by susivagn         ###   ########.fr        #
+#    Updated: 2017/08/10 16:07:38 by susivagn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,7 +106,8 @@ SRC = ft_bzero.c \
 	  ft_process_precision_flag.c \
 	  ft_lenmod_unsign.c \
 	  ft_lenmod_signed.c \
-	  ft_start_parsing.c
+	  ft_start.c \
+	  ft_start_processing.c
 
 OFILE = $(SRC:.c=.o)
 

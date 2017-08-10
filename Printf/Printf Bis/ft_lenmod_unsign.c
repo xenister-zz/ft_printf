@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 14:20:51 by susivagn          #+#    #+#             */
-/*   Updated: 2017/08/09 17:07:37 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/08/10 15:38:09 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ uintmax_t	ft_process_lenmod_unsigned(char c, t_printf *m_struct)
 	uintmax_t	nbr;
 
 	if (c == 'U' || c == 'O')
-		return (ft_process_lenmod_unsigned_big(&m_struct));
+		return (ft_process_lenmod_unsigned_big(m_struct));
 	if (m_struct->modhh == 1)
 		nbr = (unsigned char)va_arg(m_struct->vap, void*);
 	else if (m_struct->modh == 1)
@@ -57,7 +57,7 @@ void		ft_unsigned_numbers(char c, t_printf *m_struct)
 {
 	uintmax_t	nbr;
 
-	nbr = ft_process_lenmod_unsigned(c, &m_struct);
+	nbr = ft_process_lenmod_unsigned(c, m_struct);
 	if (m_struct->flaghtag == 1 && (c == 'x' || c == 'X'))
 		m_struct->flaghtag = (c == 'x') ? 1 : 2;
 	else if (m_struct->flaghtag == 1 && (c == 'o' || c == 'O'))
@@ -70,13 +70,13 @@ void		ft_unsigned_numbers(char c, t_printf *m_struct)
 		m_struct->buffer = ft_strdup("0\0", 0);
 	if (m_struct->flagprecision >= 0 && (m_struct->flagzero = -1))
 	{
-		ft_process_precision_nbr(m_struct->buffer);
+		ft_process_precision_nbr(m_struct->buffer, m_struct);
 		if (nbr == 0 && m_struct->flaghtag == 3)
-			ft_place_htag(m_struct->flaghtag);
+			ft_place_htag(m_struct->flaghtag, m_struct);
 		else if (nbr != 0)
-			ft_place_htag(m_struct->flaghtag);
+			ft_place_htag(m_struct->flaghtag, m_struct);
 	}
-	ft_process_flag_str(ft_strlen(m_struct->buffer));
+	ft_process_flag_str(ft_strlen(m_struct->buffer), m_struct);
 	if (m_struct->flaghtag != 0 && nbr != 0)
-		ft_place_htag(m_struct->flaghtag);
+		ft_place_htag(m_struct->flaghtag, m_struct);
 }
