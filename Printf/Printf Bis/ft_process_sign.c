@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 14:28:46 by susivagn          #+#    #+#             */
-/*   Updated: 2017/08/10 15:28:27 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/08/21 19:28:44 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_place_sign(int sign, t_printf *m_struct)
 
 	i = 0;
 	ft_sign_zero(sign, m_struct);
-	if (sign != 0)
+	if (sign != 0 && m_struct->flagplus != 0)
 	{
 		while (m_struct->buffer[i] == ' ' && m_struct->buffer[i])
 			i++;

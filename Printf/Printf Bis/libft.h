@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 14:16:30 by susivagn          #+#    #+#             */
-/*   Updated: 2017/08/10 16:03:32 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/08/21 16:06:47 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int				ft_strcmp(const char *s1, const char *s2);
 int				ft_atoi(const char *str);
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
-int				ft_isalldigit(char* src);
+int				ft_isalldigit(char *src);
 int				ft_isalnum(int c);
 int				ft_isnum_no_zero(char c);
 int				ft_isascii(int c);

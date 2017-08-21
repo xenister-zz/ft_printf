@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/08 12:27:45 by susivagn          #+#    #+#             */
-/*   Updated: 2017/03/21 19:45:57 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/08/21 17:05:22 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strdup(char *src, int freesrc)
 	size_t	a;
 	char	*dst;
 
+	if (!src)
+		return (ft_strdup("(null)", 0));
 	dst = NULL;
 	a = ft_strlen(src);
 	dst = (char*)malloc(sizeof(char) * (a + 1));
