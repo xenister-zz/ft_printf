@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/07 14:16:30 by susivagn          #+#    #+#             */
-/*   Updated: 2017/08/21 16:06:47 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/08/22 15:55:17 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ char			ft_encounter(char *str, char *caras);
 int				ft_no_encounter_until(char *str, char *caras, char c);
 void			ft_str_fill_nchar_lr(char *str, char c, int n);
 void			ft_str_fill_nchar_rl(char *str, char c, int n);
-char			*ft_place_in_str(char *dst, char *src, int b);
+char			*ft_place_in_str(char *dst, char *src, int a, int b);
 char			*ft_morealloc(char *src, int n, int where);
 int				ft_isallhexa(char *src);
 int				ft_isallsame(char *str, char a);

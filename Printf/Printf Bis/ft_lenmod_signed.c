@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 14:20:04 by susivagn          #+#    #+#             */
-/*   Updated: 2017/08/21 19:52:56 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/08/22 15:22:31 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,21 @@ intmax_t	ft_process_lenmod_signed_big(t_printf *m_struct)
 
 void		ft_signed_numbers(char c, t_printf *m_struct)
 {
+	char	*str;
+
 	if (c == 'd' || c == 'i')
 		m_struct->buffer = ft_itoa(ft_process_lenmod_signed(m_struct));
 	else
 		m_struct->buffer = ft_itoa(ft_process_lenmod_signed_big(m_struct));
+	str = m_struct->buffer;
 	if (ft_strchr(m_struct->buffer, '-') && (m_struct->flagplus = -1))
+	{
 		m_struct->buffer = ft_strdup(&m_struct->buffer[1], 0);
+		free (str);
+	}
 	if (m_struct->flagspace == 1 && ((m_struct->flagwidth == 0 &&
-					m_struct->flagprecision == -1) || (m_struct->flagwidth <
-						m_struct->flagprecision)))
+		m_struct->flagprecision == -1) || (m_struct->flagwidth <
+			m_struct->flagprecision)))
 		m_struct->buffer = ft_append(" ", m_struct->buffer, 2);
 	if (m_struct->flagprecision != -1 && (m_struct->flagzero = -1))
 		ft_process_precision_nbr(m_struct->buffer, m_struct);
