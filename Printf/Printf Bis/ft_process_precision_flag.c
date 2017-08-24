@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 14:24:19 by susivagn          #+#    #+#             */
-/*   Updated: 2017/08/22 15:57:11 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/08/24 19:32:02 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,21 @@ void	ft_process_precision_str(char *str, char c, t_printf *m_struct)
 	{
 		m_struct->flagprecision = 1;
 		m_struct->buffer = ft_strsub(str, 0, m_struct->flagprecision);
+		if (str)
+			free(str);
 	}
 	else if (m_struct->flagprecision == 0 && (c != 'c' || c != 'C'))
+	{
 		m_struct->buffer = ft_strsub(str, 0, 0);
+		if (str)
+			free(str);
+	}
 	else
+	{
 		m_struct->buffer = ft_strsub(str, 0, m_struct->flagprecision);
+		if (str)
+			free(str);
+	}
 }
 
 void	ft_process_precision_nbr(char *str, t_printf *m_struct)
@@ -63,7 +73,11 @@ void	ft_process_precision_nbr(char *str, t_printf *m_struct)
 
 	lenstr = ft_strlen(str);
 	if (m_struct->flagprecision == 0 && m_struct->buffer[0] == '0')
+	{
+		if (m_struct->buffer)
+			free(m_struct->buffer);
 		m_struct->buffer = ft_strdup("", 0);
+	}
 	else if (m_struct->flagprecision > lenstr)
 	{
 		m_struct->buffer = ft_memalloc((sizeof(char) *

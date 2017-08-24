@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 14:32:39 by susivagn          #+#    #+#             */
-/*   Updated: 2017/08/22 16:43:08 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/08/24 19:28:46 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_string_char(char c, t_printf *m_struct)
 	if (c == 's')
 	{
 		if (!(cpystr = ft_strdup((char*)va_arg(m_struct->vap, char*), 0)))
-			m_struct->buffer = cpystr;
+			m_struct->buffer = ft_strdup(cpystr, 1);
 		if (m_struct->flagprecision != -1)
 			ft_process_precision_str(cpystr, c, m_struct);
 		else
