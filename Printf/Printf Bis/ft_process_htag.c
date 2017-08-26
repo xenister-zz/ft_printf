@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 14:26:19 by susivagn          #+#    #+#             */
-/*   Updated: 2017/08/22 14:28:44 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/08/26 16:19:02 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,12 @@ void	ft_put_htag_space_after(int sign, t_printf *m_struct)
 
 	i = ft_strlen(m_struct->buffer);
 	j = ft_count_char(m_struct->buffer, ' ');
-	if (sign == 3)
+	if (sign == 3 && i > 1)
+	{
+		m_struct->buffer[i - 1] = '\0';
+		m_struct->buffer = ft_append("0", m_struct->buffer, 2);
+	}
+	else if (sign == 3 && i <= 1)
 	{
 		m_struct->buffer[i] = '\0';
 		m_struct->buffer = ft_append("0", m_struct->buffer, 2);
