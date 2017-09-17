@@ -6,9 +6,11 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/30 18:05:59 by susivagn          #+#    #+#             */
-/*   Updated: 2017/08/21 15:21:04 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/09/17 15:18:00 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int		ft_no_encounter_until(char *str, char *caras, char c)
 {

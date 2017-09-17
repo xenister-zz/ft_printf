@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/09 15:22:17 by susivagn          #+#    #+#             */
-/*   Updated: 2017/08/26 20:02:08 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/09/17 16:04:56 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,6 @@ int				ft_start_processing(char c, t_printf *m_struct);
 void			ft_print_adress(t_printf *m_struct);
 int				ft_check_space(char *str);
 void			ft_process_octal(t_printf *m_struct, int len);
+int				ft_merde_checker(char *arg, int *i, int l);
 
 #endif

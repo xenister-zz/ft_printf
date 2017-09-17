@@ -6,7 +6,7 @@
 #    By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/09 17:53:05 by susivagn          #+#    #+#              #
-#    Updated: 2017/08/10 16:07:38 by susivagn         ###   ########.fr        #
+#    Updated: 2017/09/17 15:19:20 by susivagn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,6 +85,7 @@ SRC = ft_bzero.c \
 	  ft_no_encounter_char.c \
 	  ft_encounter.c \
 	  ft_no_encounter_until.c \
+	  ft_no_encounter_until_index.c \
 	  ft_isnum_no_zero.c \
 	  ft_putstr_a_to_b.c \
 	  ft_putunicode.c \

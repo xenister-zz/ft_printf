@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_no_encounter_until.c                            :+:      :+:    :+:   */
+/*   ft_no_encounter_until_index.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/30 18:05:59 by susivagn          #+#    #+#             */
-/*   Updated: 2017/08/08 14:59:56 by susivagn         ###   ########.fr       */
+/*   Created: 2017/09/17 15:17:42 by susivagn          #+#    #+#             */
+/*   Updated: 2017/09/17 18:05:55 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_no_encounter_until(char *str, char *caras, char c)
+#include "libft.h"
+
+int		ft_no_encounter_until_index(char *str, char *caras, char c)
 {
 	int		i;
 	int		j;
@@ -29,8 +31,8 @@ int		ft_no_encounter_until(char *str, char *caras, char c)
 			j++;
 		}
 		if (ya == 0)
-			return (0);
+			return (-i);
 		i++;
 	}
-	return (1);
+	return (i);
 }

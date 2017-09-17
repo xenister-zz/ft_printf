@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 17:28:54 by susivagn          #+#    #+#             */
-/*   Updated: 2017/08/26 19:32:19 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/09/17 19:32:59 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 int		main(int ac, char **av)
 {
 	char c = 'r';
-	char *str = "dede";
+	char *str = "12345+lrmlll";
 	long long	nbr = 4444444;
 /*	wchar_t myChar1 = L'Ω';*/
 	setlocale(LC_ALL, "");
@@ -28,18 +28,30 @@ int		main(int ac, char **av)
 	if(ac || av)
 		;
 
-	ft_printf("%#09.3o\n", 0);
-	printf("%#09.3o\n", 0);
+	//printf("|%d|\n", ft_no_encounter_until(str, "-+# .0123456789hljz", c));
 
-	ft_printf("%#.4o\n", 1);
-	printf("%#.4o\n", 1);
 
-	ft_printf("%#0.3o\n", 1);
-	printf("%#0.3o\n", 1);
+	printf("%-rDr+# .012o     |%d\n", 45, 46);
+	ft_printf("%-rDr+# .012o     |%d\n", 45, 46);
 
-	ft_printf("%#09.0o\n", 482);
-	printf("%#09.0o\n", 482);
+	printf("aa%%bb\n");
+	ft_printf("aa%%bb\n");
 
+	printf("% Zoooo\n");
+	ft_printf("% Zoooo\n");
+
+	// ft_printf("%#09.3o\n", 0);
+	// printf("%#09.3o\n", 0);
+	//
+	// ft_printf("%#.4o\n", 1);
+	// printf("%#.4o\n", 1);
+	//
+	// ft_printf("%#0.3o\n", 1);
+	// printf("%#0.3o\n", 1);
+	//
+	// ft_printf("%#09.0o\n", 482);
+	// printf("%#09.0o\n", 482);
+	//
 	// ft_printf("%#04096o\n", 1337);
 
 	//printf("------*START*-------\n");
