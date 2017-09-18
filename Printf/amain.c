@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 17:28:54 by susivagn          #+#    #+#             */
-/*   Updated: 2017/09/17 19:32:59 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/09/18 18:39:39 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,22 @@ int		main(int ac, char **av)
 	//printf("|%d|\n", ft_no_encounter_until(str, "-+# .0123456789hljz", c));
 
 
-	printf("%-rDr+# .012o     |%d\n", 45, 46);
-	ft_printf("%-rDr+# .012o     |%d\n", 45, 46);
+	printf("%#.o\n", 42);
+	ft_printf("%#.o\n", 42);
+	//printf("%d---", printf("%hhC, %hhC\n", 0, L'米'));
+	//printf("%d---", ft_printf("%hhC, %hhC\n", 0, L'米'));
 
-	printf("aa%%bb\n");
-	ft_printf("aa%%bb\n");
-
-	printf("% Zoooo\n");
-	ft_printf("% Zoooo\n");
+	// printf("%-rDr+# .012o     |%d\n", 45, 46);
+	// ft_printf("%-rDr+# .012o     |%d\n", 45, 46);
+	//
+	// printf("|aa%%bb|\n");
+	// ft_printf("|aa%%bb|\n");
+	//
+	// printf("|% Zoooo|\n");
+	// ft_printf("|% Zoooo|\n");
+	//
+	// printf("|{%}|\n");
+	// ft_printf("|{%}|\n");
 
 	// ft_printf("%#09.3o\n", 0);
 	// printf("%#09.3o\n", 0);

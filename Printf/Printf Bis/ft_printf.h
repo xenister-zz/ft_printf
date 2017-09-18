@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/09 15:22:17 by susivagn          #+#    #+#             */
-/*   Updated: 2017/09/17 16:04:56 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/09/18 18:25:39 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct	s_printf
 {
 	va_list	vap;
+	int		flag;
 	int		flagminus;
 	int		flagplus;
 	int		flaghtag;
@@ -73,6 +74,9 @@ int				ft_start_processing(char c, t_printf *m_struct);
 void			ft_print_adress(t_printf *m_struct);
 int				ft_check_space(char *str);
 void			ft_process_octal(t_printf *m_struct, int len);
-int				ft_merde_checker(char *arg, int *i, int l);
+int				ft_merde_checker(char *arg, int *i, int l, t_printf *m_struct);
+int				ft_minicheck(char *arg, int i, t_printf *m_struct);
+void			ft_set_init_flag(t_printf *m_struct);
+int				ft_ending_no_pourcent(char *arg, int i, t_printf *m_struct);
 
 #endif

@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_encounter.c                                     :+:      :+:    :+:   */
+/*   ft_no_encounter_index.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/24 18:52:09 by susivagn          #+#    #+#             */
-/*   Updated: 2017/09/18 11:27:31 by susivagn         ###   ########.fr       */
+/*   Created: 2017/09/18 16:29:00 by susivagn          #+#    #+#             */
+/*   Updated: 2017/09/18 18:31:54 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	ft_encounter(char *str, char *caras)
+int		ft_no_encounter_index(char *str, char *caras)
 {
 	int		i;
 	int		j;
+	int		ya;
 
 	i = 0;
 	j = 0;
 	while (str[i])
 	{
 		j = 0;
+		ya = 0;
 		while (caras[j])
 		{
 			if (str[i] == caras[j])
-				return (str[i]);
+				ya = 1;
 			j++;
 		}
+		if (ya == 0)
+			return (i);
 		i++;
 	}
-	return (-1);
+	return (0);
 }

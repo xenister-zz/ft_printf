@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/09 15:19:19 by susivagn          #+#    #+#             */
-/*   Updated: 2017/08/21 15:23:44 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/09/18 18:12:50 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,3 +68,16 @@ void	init_struct_flag_lenmod(t_printf *m_struct)
 	m_struct->modj = 0;
 	m_struct->modz = 0;
 }
+
+void	ft_set_init_flag(t_printf *m_struct)
+{
+	m_struct->flagminus = 0;
+	m_struct->flagplus = 0;
+	m_struct->flaghtag = 0;
+	m_struct->flagspace = 0;
+	m_struct->flagprecision = -1;
+	if (m_struct->flagwidth != 0 || m_struct->flagzero != -1)
+		m_struct->lm = m_struct->flagwidth >= m_struct->flagzero ?
+			m_struct->flagwidth : m_struct->flagzero;
+}
+
