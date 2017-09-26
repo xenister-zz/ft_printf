@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 17:28:54 by susivagn          #+#    #+#             */
-/*   Updated: 2017/09/18 18:39:39 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/09/26 19:39:21 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ int		main(int ac, char **av)
 		;
 
 	//printf("|%d|\n", ft_no_encounter_until(str, "-+# .0123456789hljz", c));
+	printf("{% -3d}\n", 4);
+	ft_printf("{% -3d}\n", 4);
 
-
-	printf("%#.o\n", 42);
-	ft_printf("%#.o\n", 42);
+	printf("{% +d}\n", 42);
+	ft_printf("{% +d}\n", 42);
 	//printf("%d---", printf("%hhC, %hhC\n", 0, L'米'));
 	//printf("%d---", ft_printf("%hhC, %hhC\n", 0, L'米'));
 

@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/09 15:22:17 by susivagn          #+#    #+#             */
-/*   Updated: 2017/09/18 18:25:39 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/09/26 19:19:45 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,6 @@ int				ft_merde_checker(char *arg, int *i, int l, t_printf *m_struct);
 int				ft_minicheck(char *arg, int i, t_printf *m_struct);
 void			ft_set_init_flag(t_printf *m_struct);
 int				ft_ending_no_pourcent(char *arg, int i, t_printf *m_struct);
+void			ft_flag_space(t_printf *m_struct);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 14:28:46 by susivagn          #+#    #+#             */
-/*   Updated: 2017/08/21 19:28:44 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/09/26 19:37:55 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ void	ft_sign_zero(int sign, t_printf *m_struct)
 {
 	int		i;
 
-	i = 0;
-	if (sign != 0)
+	if (!(i = 0) && sign != 0)
 	{
 		if ((sign == 1) && ft_strcmp("0", m_struct->buffer) == 0)
 		{
@@ -49,7 +48,8 @@ void	ft_sign_zero(int sign, t_printf *m_struct)
 		else if (ft_strlen(m_struct->buffer) > 0 &&
 			ft_isallsame(m_struct->buffer, '0') == 1 &&
 				sign == 1)
-			m_struct->buffer[0] = '+';
+			(m_struct->buffer[0] = '+')
+			&& (m_struct->flagplus = 0);
 	}
 }
 
@@ -80,4 +80,5 @@ void	ft_place_sign(int sign, t_printf *m_struct)
 				m_struct->buffer = ft_append("+", m_struct->buffer, 2);
 		}
 	}
+	m_struct->flagplus = 0;
 }

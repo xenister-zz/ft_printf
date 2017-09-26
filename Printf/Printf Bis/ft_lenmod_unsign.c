@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 14:20:51 by susivagn          #+#    #+#             */
-/*   Updated: 2017/09/18 18:53:25 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/09/19 15:14:03 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,18 @@ void		ft_process_octal(t_printf *m_struct, int len)
 {
 	if (m_struct->flaghtag == 3)
 	{
-		printf("==%d\n", m_struct->flagprecision);
 		if (m_struct->flaghtag == 3 && m_struct->flagzero != -1)
 			m_struct->flaghtag = 0;
 		if (m_struct->flagprecision > 0 && m_struct->flaghtag == 3)
 			m_struct->flaghtag = 0;
+		if (m_struct->flagprecision == 0 && m_struct->flaghtag == 3)
+		{
+			m_struct->flaghtag = 3;
+			m_struct->flagprecision = -1;
+		}
 		if (m_struct->flagprecision == 0 && m_struct->flagzero > 0)
 		{
-			m_struct->flagprecision = len - 1;
+			m_struct->flagprecision = len -1;
 			m_struct->flagzero = -1;
 			m_struct->flaghtag = 0;
 		}
