@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/09 16:32:34 by susivagn          #+#    #+#             */
-/*   Updated: 2017/09/27 10:39:26 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/09/27 12:04:29 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		ft_pourcent_chck(char *arg, int i, int l, t_printf *m_struct)
 			while (i < l && arg[i] != '%')
 				i++;
 			i = (i >= l) ? i : ++i;
-			free(m_struct->buffer);
+			ft_strdel(&m_struct->buffer);
 		}
 		else
 			return (i);
@@ -60,6 +60,7 @@ int		ft_starter_with_flags(char *arg, t_printf *m_struct)
 			ft_get_len_mod(&arg[i], c, m_struct);
 			ft_start_processing(c, m_struct);
 			m_struct->len += ft_putstr(m_struct->buffer);
+			ft_strdel(&m_struct->buffer);
 		}
 		m_struct->len += ft_putstr_a_to_b(&arg[i], c, '%');
 	}

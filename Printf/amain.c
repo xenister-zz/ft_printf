@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 17:28:54 by susivagn          #+#    #+#             */
-/*   Updated: 2017/09/27 10:24:07 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/09/27 12:10:31 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,51 +29,79 @@ int		main(int ac, char **av)
 		;
 
 	//printf("|%d|\n", ft_no_encounter_until(str, "-+# .0123456789hljz", c));
-	printf("%.0p, %.p", 0, 0);
-	printf("% Zoooo");
-	//printf("%d---", printf("%hhC, %hhC\n", 0, L'米'));
-	//printf("%d---", ft_printf("%hhC, %hhC\n", 0, L'米'));
+	ft_printf("\\n");
+  ft_printf("%%\\n");
+  ft_printf("%d\\n", 42);
+  ft_printf("%d%d\\n", 42, 41);
+  ft_printf("%d%d%d\\n", 42, 43, 44);
+  ft_printf("%ld\\n", 2147483647);
+  ft_printf("%lld\\n", 9223372036854775807);
+  ft_printf("%x\\n", 505);
+  ft_printf("%X\\n", 505);
+  ft_printf("%p\\n", &ft_printf);
+  ft_printf("%20.15d\\n", 54321);
+  ft_printf("%-10d\\n", 3);
+  ft_printf("% d\\n", 3);
+  ft_printf("%+d\\n", 3);
+  ft_printf("%010d\\n", 1);
+  ft_printf("%hhd\\n", 0);
+  ft_printf("%jd\\n", 9223372036854775807);
+  ft_printf("%zd\\n", 4294967295);
+  ft_printf("%\\n");
+  ft_printf("%U\\n", 4294967295);
+  ft_printf("%u\\n", 4294967295);
+  ft_printf("%o\\n", 40);
+  ft_printf("%%#08x\\n", 42);
+  ft_printf("%x\\n", 1000);
+  ft_printf("%#X\\n", 1000);
+  ft_printf("%s\\n", NULL);
+  ft_printf("%S\\n", L"ݗݜशব");
+  ft_printf("%s%s\\n", "test", "test");
+  ft_printf("%s%s%s\\n", "test", "test", "test");
+  ft_printf("%C\\n", 15000);
+	printf("%d---", printf("%hhC, %hhC\n", 0, L'米'));
+	printf("%d---", ft_printf("%hhC, %hhC\n", 0, L'米'));
 
-	// printf("%-rDr+# .012o     |%d\n", 45, 46);
-	// ft_printf("%-rDr+# .012o     |%d\n", 45, 46);
-	//
-	// printf("|aa%%bb|\n");
-	// ft_printf("|aa%%bb|\n");
-	//
-	// printf("|% Zoooo|\n");
-	// ft_printf("|% Zoooo|\n");
-	//
-	// printf("|{%}|\n");
-	// ft_printf("|{%}|\n");
+	printf("%-rDr+# .012o     |%d\n", 45, 46);
+	ft_printf("%-rDr+# .012o     |%d\n", 45, 46);
 
-	// ft_printf("%#09.3o\n", 0);
-	// printf("%#09.3o\n", 0);
-	//
-	// ft_printf("%#.4o\n", 1);
-	// printf("%#.4o\n", 1);
-	//
-	// ft_printf("%#0.3o\n", 1);
-	// printf("%#0.3o\n", 1);
-	//
-	// ft_printf("%#09.0o\n", 482);
-	// printf("%#09.0o\n", 482);
-	//
-	// ft_printf("%#04096o\n", 1337);
+	printf("|aa%%bb|\n");
+	ft_printf("|aa%%bb|\n");
 
-	//printf("------*START*-------\n");
+	printf("|% Zoooo|\n");
+	ft_printf("|% Zoooo|\n");
 
-	////printf("%5%\n");
-  //
-  // t_printf("%#-08x|\n", 42);
-  // /printf("%#-08x|\n", 42);
-  // t_printf("%-#6o|\n", 2500);
-  // /printf("%-#6o|\n", 2500);
-  // t_printf("@moulitest: %s|\n", NULL);
-  // /printf("@moulitest: %s|\n", NULL);
-  // t_printf("%+d|\n", 0);
-  // /printf("%+d|\n", 0);
-  // t_printf("%lld|\n", -9223372036854775808);
-  // /printf("%lld|\n", -9223372036854775808);
+	printf("|{%}|\n");
+	ft_printf("|{%}|\n");
+
+	ft_printf("%#09.3o\n", 0);
+	printf("%#09.3o\n", 0);
+
+	ft_printf("%#.4o\n", 1);
+	printf("%#.4o\n", 1);
+
+	ft_printf("%#0.3o\n", 1);
+	printf("%#0.3o\n", 1);
+
+	ft_printf("%#09.0o\n", 482);
+	printf("%#09.0o\n", 482);
+
+	ft_printf("%#04096o\n", 1337);
+
+	printf("------*START*-------\n");
+
+	//printf("%5%\n");
+
+  ft_printf("%#-08x|\n", 42);
+  printf("%#-08x|\n", 42);
+  ft_printf("%-#6o|\n", 2500);
+  printf("%-#6o|\n", 2500);
+  ft_printf("@moulitest: %s|\n", NULL);
+  printf("@moulitest: %s|\n", NULL);
+  ft_printf("%+d|\n", 0);
+  printf("%+d|\n", 0);
+  ft_printf("%lld|\n", -9223372036854775808);
+  printf("%lld|\n", -9223372036854775808);
   //
   //
   // t_printf("%C\n", L'ë');
