@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 14:24:19 by susivagn          #+#    #+#             */
-/*   Updated: 2017/09/26 17:41:55 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/09/27 10:36:21 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ft_process_flag_str(int lenstr, t_printf *m_struct)
 	int		len;
 
 	buff = NULL;
-	//printf("|%s|\n", m_struct->buffer);
 	if (m_struct->flagplus != 0 && m_struct->flagminus == 1)
 		m_struct->lm--;
 	if (m_struct->lm >= lenstr)
@@ -37,7 +36,6 @@ void	ft_process_flag_str(int lenstr, t_printf *m_struct)
 		else
 			m_struct->buffer = ft_place_in_str(buff, m_struct->buffer, 1, 1);
 	}
-	//printf("|%s|\n", m_struct->buffer);
 }
 
 void	ft_process_precision_str(char *str, char c, t_printf *m_struct)
@@ -93,6 +91,6 @@ void	ft_process_precision_nbr(char *str, t_printf *m_struct)
 	else if (m_struct->flagprecision <= lenstr)
 	{
 		m_struct->buffer = str;
-		ft_place_sign(m_struct->flagplus, m_struct);
+		ft_place_sign(m_struct->flagplus, m_struct, 0);
 	}
 }

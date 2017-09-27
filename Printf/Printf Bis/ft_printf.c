@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/09 15:19:19 by susivagn          #+#    #+#             */
-/*   Updated: 2017/09/18 18:12:50 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/09/27 10:29:29 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,3 @@ void	ft_set_init_flag(t_printf *m_struct)
 		m_struct->lm = m_struct->flagwidth >= m_struct->flagzero ?
 			m_struct->flagwidth : m_struct->flagzero;
 }
-

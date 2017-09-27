@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/10 15:33:29 by susivagn          #+#    #+#             */
-/*   Updated: 2017/08/22 15:57:38 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/09/27 10:29:16 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ char	*ft_place_in_str(char *dst, char *src, int a, int b)
 		}
 	}
 	if (b == 1)
-		free (src);
+		free(src);
 	return (dst);
 }

@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 14:20:04 by susivagn          #+#    #+#             */
-/*   Updated: 2017/09/26 19:42:21 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/09/27 10:36:23 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,14 @@ void		ft_signed_numbers(char c, t_printf *m_struct)
 	if (ft_strchr(m_struct->buffer, '-') && (m_struct->flagplus = -1))
 	{
 		m_struct->buffer = ft_strdup(&m_struct->buffer[1], 0);
-		free (str);
+		free(str);
 	}
 	if (m_struct->flagplus != 0)
 		m_struct->flagspace = 0;
 	if (m_struct->flagprecision != -1 && (m_struct->flagzero = -1))
 		ft_process_precision_nbr(m_struct->buffer, m_struct);
 	ft_process_flag_str(ft_strlen(m_struct->buffer), m_struct);
-	ft_place_sign(m_struct->flagplus, m_struct);
+	ft_place_sign(m_struct->flagplus, m_struct, 0);
 	ft_flag_space(m_struct);
 }
 
@@ -91,17 +91,17 @@ void		ft_flag_space(t_printf *m_struct)
 			if ((m_struct->buffer[l - 1] == ' ') && !(m_struct->buffer[l - 1] =
 				'\0'))
 				m_struct->buffer = ft_append(" ", m_struct->buffer, 2);
-			return;
+			return ;
 		}
 		if (m_struct->buffer[0] == ' ')
-			return;
+			return ;
 		if (m_struct->buffer[0] == '0')
 		{
 			m_struct->buffer[0] = ' ';
-			return;
+			return ;
 		}
 		else
 			m_struct->buffer = ft_append(" ", m_struct->buffer, 2);
 	}
-	return;
+	return ;
 }

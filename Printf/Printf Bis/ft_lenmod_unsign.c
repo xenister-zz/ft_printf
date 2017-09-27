@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 14:20:51 by susivagn          #+#    #+#             */
-/*   Updated: 2017/09/19 15:14:03 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/09/27 10:33:47 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,13 @@ void		ft_unsigned_numbers(char c, t_printf *m_struct)
 	{
 		ft_process_precision_nbr(m_struct->buffer, m_struct);
 		if (nbr == 0 && m_struct->flaghtag == 3)
-			ft_place_htag(m_struct->flaghtag, m_struct);
+			ft_place_htag(m_struct->flaghtag, m_struct, 0);
 		else if (nbr != 0)
-			ft_place_htag(m_struct->flaghtag, m_struct);
+			ft_place_htag(m_struct->flaghtag, m_struct, 0);
 	}
 	ft_process_flag_str(ft_strlen(m_struct->buffer), m_struct);
 	if (m_struct->flaghtag != 0 && nbr != 0)
-		ft_place_htag(m_struct->flaghtag, m_struct);
+		ft_place_htag(m_struct->flaghtag, m_struct, 0);
 }
 
 void		ft_process_octal(t_printf *m_struct, int len)
@@ -97,7 +97,7 @@ void		ft_process_octal(t_printf *m_struct, int len)
 		}
 		if (m_struct->flagprecision == 0 && m_struct->flagzero > 0)
 		{
-			m_struct->flagprecision = len -1;
+			m_struct->flagprecision = len - 1;
 			m_struct->flagzero = -1;
 			m_struct->flaghtag = 0;
 		}

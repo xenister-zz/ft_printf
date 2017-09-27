@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/09 15:22:17 by susivagn          #+#    #+#             */
-/*   Updated: 2017/09/26 19:19:45 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/09/27 10:36:48 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ int				ft_get_width_precision_zero(char *arg, int b, t_printf
 void			ft_get_len_mod(char *arg, char c, t_printf *m_struct);
 void			ft_get_flags(char *arg, char c, t_printf *m_struct);
 void			ft_place_htag_pres(int sign, t_printf *m_struct);
-void			ft_place_htag(int sign, t_printf *m_struct);
+void			ft_place_htag(int sign, t_printf *m_struct, int i);
 void			ft_put_htag_space_after(int sign, t_printf *m_struct);
 void			ft_process_flag_str(int lenstr, t_printf *m_struct);
 void			ft_process_precision_str(char *str, char c, t_printf *m_struct);
 void			ft_process_precision_nbr(char *str, t_printf *m_struct);
 void			ft_place_sign_pres(int sign, t_printf *m_struct);
 void			ft_sign_zero(int sign, t_printf *m_struct);
-void			ft_place_sign(int sign, t_printf *m_struct);
+void			ft_place_sign(int sign, t_printf *m_struct, int i);
 void			ft_string_char(char c, t_printf *m_struct);
 char			*ft_getwchar(int c);
 void			ft_char(t_printf *m_struct);

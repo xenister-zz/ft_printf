@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 14:26:19 by susivagn          #+#    #+#             */
-/*   Updated: 2017/08/26 16:19:02 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/09/27 10:33:56 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,12 @@ void	ft_place_htag_pres(int sign, t_printf *m_struct)
 	m_struct->flaghtag = 0;
 }
 
-void	ft_place_htag(int sign, t_printf *m_struct)
+void	ft_place_htag(int sign, t_printf *m_struct, int i)
 {
-	int		i;
-
-	i = 0;
 	while (m_struct->buffer[i] && m_struct->buffer[i] == ' ')
 		i++;
-	if (m_struct->buffer[i] == '0' && m_struct->buffer[i + 1] == '0' && (sign == 1 || sign == 2))
+	if (m_struct->buffer[i] == '0' && m_struct->buffer[i + 1] == '0' &&
+		(sign == 1 || sign == 2))
 		m_struct->buffer[i + 1] = (sign == 1) ? 'x' : 'X';
 	else if (i > 0 && sign == 3)
 		m_struct->buffer[i - 1] = '0';
