@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 14:20:51 by susivagn          #+#    #+#             */
-/*   Updated: 2017/09/27 10:33:47 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/09/27 17:17:53 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void		ft_unsigned_numbers(char c, t_printf *m_struct)
 
 	nbr = ft_process_lenmod_unsigned(c, m_struct);
 	if (m_struct->flaghtag == 1 && (c == 'x' || c == 'X'))
-		m_struct->flaghtag = (c == 'x') ? 1 : 2;
+		ft_process_hexa(m_struct, nbr, c);
 	else if (m_struct->flaghtag == 1 && (c == 'o' || c == 'O'))
 		m_struct->flaghtag = 3;
 	if (nbr != 0 && (c != 'u' || c != 'U'))
@@ -80,6 +80,13 @@ void		ft_unsigned_numbers(char c, t_printf *m_struct)
 	ft_process_flag_str(ft_strlen(m_struct->buffer), m_struct);
 	if (m_struct->flaghtag != 0 && nbr != 0)
 		ft_place_htag(m_struct->flaghtag, m_struct, 0);
+}
+
+void		ft_process_hexa(t_printf *m_struct, int n, char c)
+{
+	if (n != 0 && m_struct->flagprecision > 2)
+		m_struct->flagprecision += 2;
+	m_struct->flaghtag = (c == 'x') ? 1 : 2;
 }
 
 void		ft_process_octal(t_printf *m_struct, int len)

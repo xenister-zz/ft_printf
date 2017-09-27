@@ -6,7 +6,7 @@
 /*   By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/08 14:32:39 by susivagn          #+#    #+#             */
-/*   Updated: 2017/09/27 10:21:24 by susivagn         ###   ########.fr       */
+/*   Updated: 2017/09/27 15:04:52 by susivagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_string_char(char c, t_printf *m_struct)
 		ft_char(m_struct);
 	if ((m_struct->modl == 1 && c == 'c') || c == 'C')
 		ft_big_char(m_struct);
-	if (c == 's')
+	if (c == 's' && m_struct->modl == 0)
 	{
 		if (!(cpystr = ft_strdup((char*)va_arg(m_struct->vap, char*), 0)))
 			m_struct->buffer = ft_strdup(cpystr, 1);
@@ -37,6 +37,14 @@ void	ft_string_char(char c, t_printf *m_struct)
 		m_struct->buffer = ft_strdup("%", 0);
 		ft_process_flag_str(ft_strlen(m_struct->buffer), m_struct);
 	}
+	if ((c == 'S') || (c == 's' && m_struct->modl == 1))
+		ft_big_s(m_struct);
+}
+
+void	ft_big_s(t_printf *m_struct)
+{
+	va_arg(m_struct->vap, void*);
+	return ;
 }
 
 char	*ft_getwchar(int c)

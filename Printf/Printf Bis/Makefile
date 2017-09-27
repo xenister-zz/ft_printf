@@ -6,7 +6,7 @@
 #    By: susivagn <susivagn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/09 17:53:05 by susivagn          #+#    #+#              #
-#    Updated: 2017/09/18 16:35:00 by susivagn         ###   ########.fr        #
+#    Updated: 2017/09/27 15:08:59 by susivagn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,12 +113,12 @@ SRC = ft_bzero.c \
 
 OFILE = $(SRC:.c=.o)
 
-FLAGS= -Wall -Wextra #-g3 -fsanitize=address
+FLAGS= -Wall -Wextra -Werror
 
 all: $(NAME)
 
 $(NAME): $(OFILE)
-	#gcc -Wall -Werror -Wextra -g -c $(SRC)
+	gcc -Wall -Werror -Wextra -g -c $(SRC)
 	ar rc $(NAME) $(OFILE)
 	ranlib $(NAME)
 
